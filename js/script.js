@@ -14,12 +14,21 @@
   const revealElements = document.querySelectorAll('.reveal');
   const statNumbers = document.querySelectorAll('.about__stat-number');
 
+  /* ── Dynamic navbar clearance for hero padding ── */
+  function setNavbarClearance() {
+    if (!navbar) return;
+    const top = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--navbar-top')) || 20;
+    const breathing = 40;
+    const clearance = navbar.offsetHeight + top + breathing;
+    document.documentElement.style.setProperty('--navbar-clearance', clearance + 'px');
+  }
+
   /* ── Navbar scroll glass effect ── */
   function handleScroll() {
-    if (window.scrollY > 40 || document.body.classList.contains('nav-open')) {
-      navbar.classList.add('is-scrolled');
+    if (window.scrollY > 10 || document.body.classList.contains('nav-open')) {
+      navbar.classList.add('scrolled');
     } else {
-      navbar.classList.remove('is-scrolled');
+      navbar.classList.remove('scrolled');
     }
     updateActiveNavLink();
   }
@@ -166,6 +175,7 @@
 
   /* ── Event listeners ── */
   window.addEventListener('scroll', handleScroll, { passive: true });
+  setNavbarClearance();
   handleScroll();
 
   if (navToggle) {
@@ -177,10 +187,13 @@
   });
 
   window.addEventListener('resize', function () {
+    setNavbarClearance();
     if (window.innerWidth > 768) {
       closeMobileMenu();
     }
   });
+
+  setNavbarClearance();
 
   document.addEventListener('click', function (e) {
     if (!navMenu.classList.contains('is-open')) return;
@@ -188,7 +201,48 @@
     closeMobileMenu();
   });
 
+  /* ── Projects carousel navigation ── */
+  function initProjectsCarousel() {
+    const carousel = document.getElementById('projects-carousel');
+    const prevBtn = document.querySelector('.projects__nav--prev');
+    const nextBtn = document.querySelector('.projects__nav--next');
+
+    if (!carousel || !prevBtn || !nextBtn) return;
+
+    function getScrollAmount() {
+      const card = carousel.querySelector('.project-card');
+      if (!card) return 320;
+
+      const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+      return card.offsetWidth + gap;
+    }
+
+    function updateNavButtons() {
+      const threshold = 8;
+      const atStart = carousel.scrollLeft <= threshold;
+      const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - threshold;
+
+      prevBtn.disabled = atStart;
+      nextBtn.disabled = atEnd;
+      prevBtn.setAttribute('aria-disabled', String(atStart));
+      nextBtn.setAttribute('aria-disabled', String(atEnd));
+    }
+
+    prevBtn.addEventListener('click', function () {
+      carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', function () {
+      carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+
+    carousel.addEventListener('scroll', updateNavButtons, { passive: true });
+    window.addEventListener('resize', updateNavButtons);
+    updateNavButtons();
+  }
+
   /* ── Init ── */
   initReveal();
   initStatCounters();
+  initProjectsCarousel();
 })();

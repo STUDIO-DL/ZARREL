@@ -204,71 +204,39 @@
           </div>
         </div>
 
-        <div class="hero__visual reveal" aria-hidden="true">
-          <div class="hero__pedestal"></div>
-
-          <!-- 3D Z Logo -->
-          <svg class="hero__logo-3d" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="zFront" x1="40" y1="30" x2="160" y2="170" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#4A8CFF"/>
-                <stop offset="1" stop-color="#2E6FF2"/>
-              </linearGradient>
-              <linearGradient id="zSide" x1="120" y1="40" x2="190" y2="180" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#1A4FCC"/>
-                <stop offset="1" stop-color="#153D9E"/>
-              </linearGradient>
-              <linearGradient id="zHighlight" x1="50" y1="40" x2="120" y2="100" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#FFFFFF" stop-opacity="0.7"/>
-                <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <!-- Side/extrusion facet -->
-            <path d="M130 45 L175 45 L115 155 L70 155 Z" fill="url(#zSide)"/>
-            <!-- Front face -->
-            <path d="M35 45 L115 45 L55 155 L25 155 Z" fill="url(#zFront)"/>
-            <!-- Top bar of Z -->
-            <path d="M35 45 L115 45 L105 65 L45 65 Z" fill="#3B7DF5"/>
-            <!-- Diagonal -->
-            <path d="M95 65 L115 85 L75 125 L55 105 Z" fill="#2563EB"/>
-            <!-- Bottom bar -->
-            <path d="M45 135 L115 135 L105 155 L35 155 Z" fill="#1E5FE8"/>
-            <!-- Specular highlight -->
-            <path d="M40 50 L90 50 L70 90 L45 70 Z" fill="url(#zHighlight)"/>
-          </svg>
-
-          <!-- Decorative objects -->
-          <div class="hero__deco hero__deco--sphere"></div>
-          <div class="hero__deco hero__deco--cube"></div>
-          <div class="hero__deco hero__deco--grid">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
-              <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
-            </svg>
+        <div class="hero__visual-col reveal">
+          <div class="hero__visual-wrap">
+            <div class="hero__visual" aria-hidden="true">
+              <img class="hero__img hero__img--pedestal" src="assets/hero-pedestal.png" alt="" width="400" height="120">
+              <img class="hero__img hero__img--logo" src="assets/zarrel-logo-3d.png" alt="" width="220" height="220">
+              <img class="hero__img hero__img--sphere" src="assets/hero-sphere.png" alt="" width="64" height="64">
+              <img class="hero__img hero__img--cube" src="assets/hero-wireframe-cube.png" alt="" width="56" height="56">
+            </div>
           </div>
 
-          <!-- Floating mini cards -->
-          <article class="hero__float-card hero__float-card--top glass-card">
-            <div class="hero__float-card-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <path d="M8 8L4 12l4 4M16 8l4 4-4 4"/>
-              </svg>
-            </div>
-            <h3 class="hero__float-card-title">Desarrollo Web</h3>
-            <p class="hero__float-card-text">Sitios modernos, rápidos y escalables para tu negocio.</p>
-            <a href="#servicios" class="hero__float-card-link">Explorar →</a>
-          </article>
+          <div class="hero__float-cards">
+            <article class="hero__float-card hero__float-card--top glass-card">
+              <div class="hero__float-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                  <path d="M8 8L4 12l4 4M16 8l4 4-4 4"/>
+                </svg>
+              </div>
+              <h3 class="hero__float-card-title">Desarrollo Web</h3>
+              <p class="hero__float-card-text">Sitios modernos, rápidos y escalables para tu negocio.</p>
+              <a href="#servicios" class="hero__float-card-link">Explorar →</a>
+            </article>
 
-          <article class="hero__float-card hero__float-card--bottom glass-card">
-            <div class="hero__float-card-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <path d="M12 20l-7-7 2.5-2.5L12 15l4.5-4.5L19 13l-7 7z"/><path d="M5 12h14"/>
-              </svg>
-            </div>
-            <h3 class="hero__float-card-title">Diseño UI/UX</h3>
-            <p class="hero__float-card-text">Experiencias intuitivas que conectan con tus usuarios.</p>
-            <a href="#servicios" class="hero__float-card-link">Explorar →</a>
-          </article>
+            <article class="hero__float-card hero__float-card--bottom glass-card">
+              <div class="hero__float-card-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+                  <path d="M12 20l-7-7 2.5-2.5L12 15l4.5-4.5L19 13l-7 7z"/><path d="M5 12h14"/>
+                </svg>
+              </div>
+              <h3 class="hero__float-card-title">Diseño UI/UX</h3>
+              <p class="hero__float-card-text">Experiencias intuitivas que conectan con tus usuarios.</p>
+              <a href="#servicios" class="hero__float-card-link">Explorar →</a>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -323,82 +291,113 @@
     <!-- Proyectos -->
     <section class="projects" id="proyectos" aria-labelledby="projects-title">
       <div class="container">
-        <div class="section-header reveal">
-          <div>
+        <header class="projects__header reveal">
+          <div class="projects__header-row">
             <span class="section-label">PROYECTOS DESTACADOS</span>
-            <h2 class="section-title" id="projects-title">Algunos de nuestros trabajos</h2>
+            <a href="proyectos.html" class="section-link">Ver todos los proyectos <span aria-hidden="true">→</span></a>
           </div>
-          <a href="#" class="section-link">Ver todos los proyectos <span aria-hidden="true">→</span></a>
-        </div>
+          <h2 class="section-title" id="projects-title">Algunos de nuestros trabajos</h2>
+        </header>
 
-        <div class="projects__grid">
-          <article class="project-card reveal">
-            <div class="project-card__preview project-card__preview--1">
-              <div class="project-preview">
-                <div class="project-preview__sidebar"></div>
-                <div class="project-preview__main">
-                  <div class="project-preview__header"></div>
-                  <div class="project-preview__chart"></div>
-                  <div class="project-preview__rows">
-                    <div></div><div></div><div></div>
+        <div class="projects__carousel-wrap reveal reveal--delay">
+          <button type="button" class="projects__nav projects__nav--prev glass-card" aria-label="Proyecto anterior" disabled>
+            <span aria-hidden="true">←</span>
+          </button>
+
+          <div class="projects__carousel" id="projects-carousel" tabindex="0">
+            <article class="project-card glass-card">
+              <div class="project-card__preview">
+                <div class="project-preview">
+                  <div class="project-preview__sidebar"></div>
+                  <div class="project-preview__main">
+                    <div class="project-preview__header"></div>
+                    <div class="project-preview__chart"></div>
+                    <div class="project-preview__rows">
+                      <div></div><div></div><div></div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">Plataforma de gestión</h3>
-              <span class="project-card__category">Desarrollo Web</span>
-            </div>
-          </article>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Plataforma Educativa</h3>
+                <span class="project-card__category">Desarrollo Web</span>
+              </div>
+            </article>
 
-          <article class="project-card reveal reveal--delay">
-            <div class="project-card__preview project-card__preview--2">
-              <div class="project-preview project-preview--dashboard">
-                <div class="project-preview__topbar"></div>
-                <div class="project-preview__widgets">
-                  <div class="project-preview__widget"></div>
-                  <div class="project-preview__widget"></div>
-                  <div class="project-preview__widget project-preview__widget--wide"></div>
+            <article class="project-card glass-card">
+              <div class="project-card__preview">
+                <div class="project-preview project-preview--store">
+                  <div class="project-preview__nav"></div>
+                  <div class="project-preview__hero-strip"></div>
+                  <div class="project-preview__products">
+                    <div></div><div></div><div></div><div></div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">App de reservas</h3>
-              <span class="project-card__category">Apps Móviles</span>
-            </div>
-          </article>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Tienda Online</h3>
+                <span class="project-card__category">E-commerce</span>
+              </div>
+            </article>
 
-          <article class="project-card reveal reveal--delay-2">
-            <div class="project-card__preview project-card__preview--3">
-              <div class="project-preview project-preview--store">
-                <div class="project-preview__nav"></div>
-                <div class="project-preview__hero-strip"></div>
-                <div class="project-preview__products">
-                  <div></div><div></div><div></div><div></div>
+            <article class="project-card glass-card">
+              <div class="project-card__preview">
+                <div class="project-preview project-preview--mobile">
+                  <div class="project-preview__phone">
+                    <div class="project-preview__status"></div>
+                    <div class="project-preview__balance"></div>
+                    <div class="project-preview__cards-row">
+                      <div></div><div></div>
+                    </div>
+                    <div class="project-preview__list">
+                      <div></div><div></div><div></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">Tienda online</h3>
-              <span class="project-card__category">E-commerce</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal reveal--delay-3">
-            <div class="project-card__preview project-card__preview--4">
-              <div class="project-preview project-preview--brand">
-                <div class="project-preview__logo-block"></div>
-                <div class="project-preview__palette">
-                  <span></span><span></span><span></span><span></span>
-                </div>
-                <div class="project-preview__typo"></div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">App Financiera</h3>
+                <span class="project-card__category">Aplicación Móvil</span>
               </div>
-            </div>
-            <div class="project-card__body">
-              <h3 class="project-card__title">Identidad de marca</h3>
-              <span class="project-card__category">Diseño Gráfico</span>
-            </div>
-          </article>
+            </article>
+
+            <article class="project-card glass-card">
+              <div class="project-card__preview">
+                <div class="project-preview project-preview--brand">
+                  <div class="project-preview__logo-block"></div>
+                  <div class="project-preview__palette">
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                  <div class="project-preview__typo"></div>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Identidad Visual</h3>
+                <span class="project-card__category">Diseño Gráfico</span>
+              </div>
+            </article>
+
+            <article class="project-card glass-card">
+              <div class="project-card__preview">
+                <div class="project-preview project-preview--dashboard">
+                  <div class="project-preview__topbar"></div>
+                  <div class="project-preview__widgets">
+                    <div class="project-preview__widget"></div>
+                    <div class="project-preview__widget"></div>
+                    <div class="project-preview__widget project-preview__widget--wide"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="project-card__body">
+                <h3 class="project-card__title">Dashboard Analytics</h3>
+                <span class="project-card__category">Desarrollo Web</span>
+              </div>
+            </article>
+          </div>
+
+          <button type="button" class="projects__nav projects__nav--next glass-card" aria-label="Proyecto siguiente">
+            <span aria-hidden="true">→</span>
+          </button>
         </div>
       </div>
     </section>
@@ -481,33 +480,50 @@
   <!-- Footer / CTA -->
   <footer class="footer" id="contacto" role="contentinfo">
     <div class="container">
-      <div class="footer__cta reveal">
-        <a href="#inicio" class="footer__brand" aria-label="ZARREL">
-          <img src="assets/logo/zarrel-logo.svg" alt="" width="40" height="40">
-          <span>ZARREL</span>
+      <div class="footer__cta glass-card reveal">
+        <a href="#inicio" class="footer__brand" aria-label="ZARREL — Inicio">
+          <span class="footer__mark" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="footerLogoGrad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#1E5FE8"/>
+                  <stop offset="1" stop-color="#4A8CFF"/>
+                </linearGradient>
+              </defs>
+              <rect width="40" height="40" rx="10" fill="url(#footerLogoGrad)"/>
+              <path d="M8 10 L8 14 L22 14 L12 26 L12 30 L32 30 L32 26 L18 26 L28 14 L28 10 Z" fill="#FFFFFF" opacity="0.95"/>
+              <path d="M8 10 L14 10 L14 12 L10 12 Z" fill="#FFFFFF" opacity="0.5"/>
+            </svg>
+          </span>
+          <span class="footer__name">ZARREL</span>
         </a>
-        <p class="footer__headline">¿Tienes un proyecto en mente? Hablemos y hagámoslo realidad.</p>
-        <a href="mailto:contacto@zarrel.com" class="btn btn--primary btn--lg">
-          Contáctanos <span aria-hidden="true">→</span>
+
+        <div class="footer__message">
+          <p class="footer__title">¿Tienes un proyecto en mente?</p>
+          <p class="footer__subtitle">Hablemos y hagámoslo realidad.</p>
+        </div>
+
+        <a href="contacto.html" class="btn btn--primary btn--sm footer__btn">
+          Hablemos <span aria-hidden="true">→</span>
         </a>
       </div>
 
       <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2024 ZARREL. Todos los derechos reservados.</p>
+        <p class="footer__copy">&copy; 2026 ZARREL. Todos los derechos reservados.</p>
         <ul class="footer__social" aria-label="Redes sociales">
           <li>
-            <a href="#" aria-label="LinkedIn">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icon-linkedin"/></svg>
+            <a href="#" aria-label="LinkedIn de ZARREL">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-linkedin"/></svg>
             </a>
           </li>
           <li>
-            <a href="#" aria-label="Instagram">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icon-instagram"/></svg>
+            <a href="#" aria-label="Instagram de ZARREL">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-instagram"/></svg>
             </a>
           </li>
           <li>
-            <a href="#" aria-label="WhatsApp">
-              <svg width="20" height="20" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
+            <a href="#" aria-label="WhatsApp de ZARREL">
+              <svg width="18" height="18" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
             </a>
           </li>
         </ul>
