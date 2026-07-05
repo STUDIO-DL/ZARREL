@@ -1,536 +1,269 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ZARREL — Agencia digital. Diseñamos y desarrollamos soluciones digitales que impulsan tu negocio.">
-  <title>ZARREL — Agencia Digital</title>
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio · ZARREL</title>
+<meta name="description" content="Agencia digital: diseño, desarrollo y marketing para impulsar tu negocio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  <!-- v2 Aurora Background -->
-  <div class="page-bg" aria-hidden="true">
-    <div class="aurora aurora--1"></div>
-    <div class="aurora aurora--2"></div>
-    <div class="aurora aurora--3"></div>
-  </div>
-
-  <!-- SVG Icon Sprite -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
-    <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-    </symbol>
-    <symbol id="icon-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M8 8L4 12l4 4M16 8l4 4-4 4"/>
-    </symbol>
-    <symbol id="icon-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <rect x="4" y="12" width="4" height="8" rx="1"/><rect x="10" y="8" width="4" height="12" rx="1"/><rect x="16" y="4" width="4" height="16" rx="1"/>
-    </symbol>
-    <symbol id="icon-pie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M12 2a10 10 0 0 1 10 10H12V2z"/><circle cx="12" cy="12" r="10"/>
-    </symbol>
-    <symbol id="icon-team" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 19c0-3 2.7-5 6-5M14 19c0-2.5 1.8-4 4-4"/>
-    </symbol>
-    <symbol id="icon-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/>
-    </symbol>
-    <symbol id="icon-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/>
-    </symbol>
-    <symbol id="icon-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"/>
-    </symbol>
-    <symbol id="icon-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 20c0-3.5 2.7-6 6-6M14 20c0-2.5 2-4.5 4.5-4.5"/>
-    </symbol>
-    <symbol id="icon-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="12" cy="9" r="5"/><path d="M8 14l-2 7 6-3 6 3-2-7"/>
-    </symbol>
-    <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/>
-    </symbol>
-    <symbol id="icon-cube" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/>
-    </symbol>
-    <symbol id="icon-shield-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M12 3l7 3v6c0 4.5-3 8-7 9-4-1-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/>
-    </symbol>
-    <symbol id="icon-web" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 4v14"/>
-    </symbol>
-    <symbol id="icon-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>
-    </symbol>
-    <symbol id="icon-design" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M12 19l-7-7 7-7 7 7-7 7z"/><path d="M5 12h14"/>
-    </symbol>
-    <symbol id="icon-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/>
-    </symbol>
-    <symbol id="icon-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>
-    </symbol>
-    <symbol id="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 4h2l2.5 12H19l2-8H6"/>
-    </symbol>
-    <symbol id="icon-marketing" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M3 11v2a2 2 0 002 2h1l4 4V5L6 9H5a2 2 0 00-2 2z"/><path d="M15 9a4 4 0 010 6"/><path d="M17 7a7 7 0 010 10"/>
-    </symbol>
-    <symbol id="icon-linkedin" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M4.98 3.5a2 2 0 100 4 2 2 0 000-4zM3 8.5h4v12H3v-12zm7 0h3.8v1.7h.1c.5-.9 1.8-1.9 3.7-1.9 4 0 4.7 2.6 4.7 6v5.2h-4v-4.6c0-1.1 0-2.5-1.5-2.5s-1.7 1.2-1.7 2.4v4.7H10V8.5z"/>
-    </symbol>
-    <symbol id="icon-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-    </symbol>
-    <symbol id="icon-whatsapp" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2a10 10 0 00-8.7 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2zm0 2a8 8 0 018 14.6l.3.2-.6 2.2-2.2-.6-.2.3A8 8 0 0112 4zm-3.5 4.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4 0 1.4 1 2.7 1.1 2.9.1.2 2 3.2 4.9 4.3 2.4 1 2.9.8 3.4.8.5 0 1.6-.6 1.8-1.2.2-.6.2-1.1.1-1.2-.1-.1-.2-.2-.5-.3l-1.9-.9c-.3-.1-.5-.2-.7.2l-.7 1c-.1.2-.3.2-.5.1-1-.5-1.9-1.2-2.6-2.1-.2-.2 0-.3.1-.5l.6-.7c.1-.1.1-.3 0-.4l-1.5-3.6c-.1-.3-.3-.4-.5-.4z"/>
-    </symbol>
-  </svg>
-
-  <!-- Navbar -->
-  <header class="navbar glass-card" id="navbar" role="banner">
-    <div class="container navbar__inner">
-      <a href="#inicio" class="navbar__brand" aria-label="ZARREL — Inicio">
-        <span class="navbar__mark" aria-hidden="true">
-          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="navLogoGrad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#1E5FE8"/>
-                <stop offset="1" stop-color="#4A8CFF"/>
-              </linearGradient>
-            </defs>
-            <rect width="40" height="40" rx="10" fill="url(#navLogoGrad)"/>
-            <path d="M8 10 L8 14 L22 14 L12 26 L12 30 L32 30 L32 26 L18 26 L28 14 L28 10 Z" fill="#FFFFFF" opacity="0.95"/>
-            <path d="M8 10 L14 10 L14 12 L10 12 Z" fill="#FFFFFF" opacity="0.5"/>
-          </svg>
-        </span>
-        <span class="navbar__name">ZARREL</span>
-      </a>
-
-      <nav class="navbar__nav" id="nav-menu" aria-label="Navegación principal">
-        <ul class="navbar__links">
-          <li><a href="#inicio" class="navbar__link navbar__link--active">Inicio</a></li>
-          <li><a href="#nosotros" class="navbar__link">Nosotros</a></li>
-          <li><a href="#servicios" class="navbar__link">Servicios</a></li>
-          <li><a href="#proyectos" class="navbar__link">Proyectos</a></li>
-          <li><a href="#tecnologias" class="navbar__link">Tecnologías</a></li>
-          <li><a href="#contacto" class="navbar__link">Contacto</a></li>
-        </ul>
-        <a href="#contacto" class="btn btn--primary btn--sm navbar__cta-mobile">
-          Hablemos <span aria-hidden="true">→</span>
-        </a>
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand"><svg class="logo-mark" width="32" height="32" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="lg12" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#5aa4ff"/><stop offset="1" stop-color="#1d4ed8"/>
+  </linearGradient></defs>
+  <rect x="1" y="1" width="38" height="38" rx="10" fill="url(#lg12)"/>
+  <path d="M12 13h16l-10.5 12H28" fill="none" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="28.5" cy="12.5" r="2.1" fill="#bfe0ff"/>
+</svg><span>ZARREL</span></a>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="nosotros.html">Nosotros</a>
+        <a href="proyectos.html">Proyectos</a>
+        <a href="servicios.html">Servicios</a>
+        <a href="blog.html">Blog</a>
+        <a href="contacto.html">Contacto</a>
       </nav>
-
-      <a href="#contacto" class="btn btn--primary btn--sm navbar__cta">
-        Hablemos <span aria-hidden="true">→</span>
-      </a>
-
-      <button class="navbar__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <div class="nav-right">
+        <a href="contacto.html" class="btn btn-primary btn-sm">Hablemos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- v2 Left Sidebar (desktop) -->
-  <aside class="sidebar glass-card" id="sidebar" aria-label="Navegación lateral">
-    <a href="#inicio" class="sidebar__link sidebar__link--active" aria-label="Inicio" data-section="inicio">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-        <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1v-9.5z"/>
-      </svg>
-    </a>
-    <a href="#nosotros" class="sidebar__link" aria-label="Nosotros" data-section="nosotros">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-      </svg>
-    </a>
-    <a href="#servicios" class="sidebar__link" aria-label="Servicios" data-section="servicios">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-        <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
-        <rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
-      </svg>
-    </a>
-    <a href="#tecnologias" class="sidebar__link" aria-label="Tecnologías" data-section="tecnologias">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-        <path d="M8 8L4 12l4 4M16 8l4 4-4 4"/>
-      </svg>
-    </a>
-    <a href="#proyectos" class="sidebar__link" aria-label="Proyectos" data-section="proyectos">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-        <rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/>
-      </svg>
-    </a>
-    <a href="#contacto" class="sidebar__link" aria-label="Contacto" data-section="contacto">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-        <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>
-      </svg>
-    </a>
-  </aside>
-
-  <main id="main-content">
-
-    <!-- Hero -->
-    <section class="hero" id="inicio" aria-labelledby="hero-title">
-      <div class="container hero__grid">
-        <div class="hero__content reveal">
-          <span class="hero__badge">
-            <span class="hero__badge-dot" aria-hidden="true"></span>
-            AGENCIA DIGITAL
-          </span>
-          <h1 class="hero__title" id="hero-title">
-            Tecnología e innovación para <span class="text-highlight">transformar ideas</span>
-          </h1>
-          <p class="hero__subtitle">
-            Diseñamos y desarrollamos soluciones digitales a medida que impulsan negocios, conectan personas y crean experiencias memorables.
-          </p>
-          <div class="hero__actions">
-            <a href="#proyectos" class="btn btn--primary">
-              Ver proyectos <span aria-hidden="true">→</span>
-            </a>
-            <a href="#servicios" class="btn btn--ghost">
-              Nuestros servicios
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                <rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/>
-                <rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="hero__visual-col reveal">
-          <div class="hero__visual-wrap">
-            <div class="hero__visual" aria-hidden="true">
-              <img class="hero__img hero__img--pedestal" src="assets/hero-pedestal.png" alt="" width="400" height="120">
-              <img class="hero__img hero__img--logo" src="assets/zarrel-logo-3d.png" alt="" width="220" height="220">
-              <img class="hero__img hero__img--sphere" src="assets/hero-sphere.png" alt="" width="64" height="64">
-              <img class="hero__img hero__img--cube" src="assets/hero-wireframe-cube.png" alt="" width="56" height="56">
-            </div>
-          </div>
-
-          <div class="hero__float-cards">
-            <article class="hero__float-card hero__float-card--top glass-card">
-              <div class="hero__float-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                  <path d="M8 8L4 12l4 4M16 8l4 4-4 4"/>
-                </svg>
-              </div>
-              <h3 class="hero__float-card-title">Desarrollo Web</h3>
-              <p class="hero__float-card-text">Sitios modernos, rápidos y escalables para tu negocio.</p>
-              <a href="#servicios" class="hero__float-card-link">Explorar →</a>
-            </article>
-
-            <article class="hero__float-card hero__float-card--bottom glass-card">
-              <div class="hero__float-card-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
-                  <path d="M12 20l-7-7 2.5-2.5L12 15l4.5-4.5L19 13l-7 7z"/><path d="M5 12h14"/>
-                </svg>
-              </div>
-              <h3 class="hero__float-card-title">Diseño UI/UX</h3>
-              <p class="hero__float-card-text">Experiencias intuitivas que conectan con tus usuarios.</p>
-              <a href="#servicios" class="hero__float-card-link">Explorar →</a>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Sobre Nosotros -->
-    <section class="about" id="nosotros" aria-labelledby="about-title">
-      <div class="container about__grid">
-        <div class="about__content reveal">
-          <span class="section-label">SOBRE NOSOTROS</span>
-          <h2 class="about__title" id="about-title">Construimos soluciones digitales que generan impacto real.</h2>
-          <p class="about__text">
-            Somos un equipo multidisciplinario de diseñadores, desarrolladores y estrategas que trabajan de forma integrada en cada proyecto. Combinamos creatividad, tecnología y visión de negocio para entregar productos digitales que impulsan el crecimiento de nuestros clientes.
-          </p>
-          <a href="nosotros.html" class="about__link">Conócenos mejor <span aria-hidden="true">→</span></a>
-        </div>
-
-        <div class="about__stats reveal reveal--delay" aria-label="Nuestras cifras">
-          <ul class="about__stats-grid">
-            <li class="about__stat glass-card reveal">
-              <div class="about__stat-icon" aria-hidden="true">
-                <svg width="22" height="22" aria-hidden="true"><use href="#icon-cube"/></svg>
-              </div>
-              <span class="about__stat-number" data-target="25" data-suffix="+">0+</span>
-              <span class="about__stat-label">Proyectos completados</span>
-            </li>
-            <li class="about__stat glass-card reveal reveal--delay">
-              <div class="about__stat-icon" aria-hidden="true">
-                <svg width="22" height="22" aria-hidden="true"><use href="#icon-bolt"/></svg>
-              </div>
-              <span class="about__stat-number" data-target="10" data-suffix="+">0+</span>
-              <span class="about__stat-label">Clientes satisfechos</span>
-            </li>
-            <li class="about__stat glass-card reveal reveal--delay-2">
-              <div class="about__stat-icon" aria-hidden="true">
-                <svg width="22" height="22" aria-hidden="true"><use href="#icon-chart"/></svg>
-              </div>
-              <span class="about__stat-number" data-target="5" data-suffix="">0</span>
-              <span class="about__stat-label">Años de experiencia</span>
-            </li>
-            <li class="about__stat glass-card reveal reveal--delay-3">
-              <div class="about__stat-icon" aria-hidden="true">
-                <svg width="22" height="22" aria-hidden="true"><use href="#icon-shield-check"/></svg>
-              </div>
-              <span class="about__stat-number" data-target="100" data-suffix="%">0%</span>
-              <span class="about__stat-label">Comprometidos contigo</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Proyectos -->
-    <section class="projects" id="proyectos" aria-labelledby="projects-title">
-      <div class="container">
-        <header class="projects__header reveal">
-          <div class="projects__header-row">
-            <span class="section-label">PROYECTOS DESTACADOS</span>
-            <a href="proyectos.html" class="section-link">Ver todos los proyectos <span aria-hidden="true">→</span></a>
-          </div>
-          <h2 class="section-title" id="projects-title">Algunos de nuestros trabajos</h2>
-        </header>
-
-        <div class="projects__carousel-wrap reveal reveal--delay">
-          <button type="button" class="projects__nav projects__nav--prev glass-card" aria-label="Proyecto anterior" disabled>
-            <span aria-hidden="true">←</span>
-          </button>
-
-          <div class="projects__carousel" id="projects-carousel" tabindex="0">
-            <article class="project-card glass-card">
-              <div class="project-card__preview">
-                <div class="project-preview">
-                  <div class="project-preview__sidebar"></div>
-                  <div class="project-preview__main">
-                    <div class="project-preview__header"></div>
-                    <div class="project-preview__chart"></div>
-                    <div class="project-preview__rows">
-                      <div></div><div></div><div></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Plataforma Educativa</h3>
-                <span class="project-card__category">Desarrollo Web</span>
-              </div>
-            </article>
-
-            <article class="project-card glass-card">
-              <div class="project-card__preview">
-                <div class="project-preview project-preview--store">
-                  <div class="project-preview__nav"></div>
-                  <div class="project-preview__hero-strip"></div>
-                  <div class="project-preview__products">
-                    <div></div><div></div><div></div><div></div>
-                  </div>
-                </div>
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Tienda Online</h3>
-                <span class="project-card__category">E-commerce</span>
-              </div>
-            </article>
-
-            <article class="project-card glass-card">
-              <div class="project-card__preview">
-                <div class="project-preview project-preview--mobile">
-                  <div class="project-preview__phone">
-                    <div class="project-preview__status"></div>
-                    <div class="project-preview__balance"></div>
-                    <div class="project-preview__cards-row">
-                      <div></div><div></div>
-                    </div>
-                    <div class="project-preview__list">
-                      <div></div><div></div><div></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">App Financiera</h3>
-                <span class="project-card__category">Aplicación Móvil</span>
-              </div>
-            </article>
-
-            <article class="project-card glass-card">
-              <div class="project-card__preview">
-                <div class="project-preview project-preview--brand">
-                  <div class="project-preview__logo-block"></div>
-                  <div class="project-preview__palette">
-                    <span></span><span></span><span></span><span></span>
-                  </div>
-                  <div class="project-preview__typo"></div>
-                </div>
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Identidad Visual</h3>
-                <span class="project-card__category">Diseño Gráfico</span>
-              </div>
-            </article>
-
-            <article class="project-card glass-card">
-              <div class="project-card__preview">
-                <div class="project-preview project-preview--dashboard">
-                  <div class="project-preview__topbar"></div>
-                  <div class="project-preview__widgets">
-                    <div class="project-preview__widget"></div>
-                    <div class="project-preview__widget"></div>
-                    <div class="project-preview__widget project-preview__widget--wide"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="project-card__body">
-                <h3 class="project-card__title">Dashboard Analytics</h3>
-                <span class="project-card__category">Desarrollo Web</span>
-              </div>
-            </article>
-          </div>
-
-          <button type="button" class="projects__nav projects__nav--next glass-card" aria-label="Proyecto siguiente">
-            <span aria-hidden="true">→</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- Servicios -->
-    <section class="services" id="servicios" aria-labelledby="services-title">
-      <div class="container">
-        <header class="services__header reveal">
-          <div class="services__header-row">
-            <span class="section-label">SERVICIOS</span>
-            <a href="servicios.html" class="section-link">Ver todos los servicios <span aria-hidden="true">→</span></a>
-          </div>
-          <h2 class="section-title" id="services-title">¿Qué podemos hacer por ti?</h2>
-        </header>
-
-        <div class="services__grid">
-          <article class="service-card glass-card reveal">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="22" height="22" aria-hidden="true"><use href="#icon-code"/></svg>
-            </div>
-            <h3 class="service-card__title">Desarrollo Web</h3>
-            <p class="service-card__text">Sitios web modernos, rápidos y escalables a la medida de tu negocio.</p>
-            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Desarrollo Web">
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <article class="service-card glass-card reveal reveal--delay">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="22" height="22" aria-hidden="true"><use href="#icon-mobile"/></svg>
-            </div>
-            <h3 class="service-card__title">Aplicaciones Móviles</h3>
-            <p class="service-card__text">Apps iOS y Android enfocadas en la mejor experiencia de usuario.</p>
-            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Aplicaciones Móviles">
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <article class="service-card glass-card reveal reveal--delay-2">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="22" height="22" aria-hidden="true"><use href="#icon-pencil"/></svg>
-            </div>
-            <h3 class="service-card__title">Diseño Gráfico</h3>
-            <p class="service-card__text">Identidades visuales que comunican y conectan con tu marca.</p>
-            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Diseño Gráfico">
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <article class="service-card glass-card reveal reveal--delay-3">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="22" height="22" aria-hidden="true"><use href="#icon-cart"/></svg>
-            </div>
-            <h3 class="service-card__title">E-commerce</h3>
-            <p class="service-card__text">Tiendas online seguras, intuitivas y optimizadas para vender más.</p>
-            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar E-commerce">
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
-
-          <article class="service-card glass-card reveal reveal--delay-4">
-            <div class="service-card__icon" aria-hidden="true">
-              <svg width="22" height="22" aria-hidden="true"><use href="#icon-trending"/></svg>
-            </div>
-            <h3 class="service-card__title">Marketing Digital</h3>
-            <p class="service-card__text">Estrategias digitales para aumentar tu visibilidad y tus resultados.</p>
-            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Marketing Digital">
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Tecnologías placeholder anchor -->
-    <span id="tecnologias" class="sr-only">Tecnologías</span>
-
-  </main>
-
-  <!-- Footer / CTA -->
-  <footer class="footer" id="contacto" role="contentinfo">
+  <section class="hero on-dark">
+    <div class="hero-glow"></div>
     <div class="container">
-      <div class="footer__cta glass-card reveal">
-        <a href="#inicio" class="footer__brand" aria-label="ZARREL — Inicio">
-          <span class="footer__mark" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <linearGradient id="footerLogoGrad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#1E5FE8"/>
-                  <stop offset="1" stop-color="#4A8CFF"/>
-                </linearGradient>
-              </defs>
-              <rect width="40" height="40" rx="10" fill="url(#footerLogoGrad)"/>
-              <path d="M8 10 L8 14 L22 14 L12 26 L12 30 L32 30 L32 26 L18 26 L28 14 L28 10 Z" fill="#FFFFFF" opacity="0.95"/>
-              <path d="M8 10 L14 10 L14 12 L10 12 Z" fill="#FFFFFF" opacity="0.5"/>
-            </svg>
-          </span>
-          <span class="footer__name">ZARREL</span>
-        </a>
-
-        <div class="footer__message">
-          <p class="footer__title">¿Tienes un proyecto en mente?</p>
-          <p class="footer__subtitle">Hablemos y hagámoslo realidad.</p>
+      <div class="hero-split">
+        <div class="hero-copy reveal in">
+          <span class="eyebrow on-dark">Agencia digital</span>
+          <h1>Diseñamos y desarrollamos soluciones digitales que <span class="text-gradient">impulsan tu negocio.</span></h1>
+          <p class="lead">En Zarrel ayudamos a empresas y marcas a transformar sus ideas en experiencias digitales modernas, funcionales y centradas en las personas.</p>
+          <div class="hero-actions">
+            <a href="proyectos.html" class="btn btn-primary">Conoce nuestros proyectos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a>
+            <a href="servicios.html" class="link-underline">Ver servicios <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="4" x2="12" y2="20"/><polyline points="6 14 12 20 18 14"/></svg></a>
+          </div>
         </div>
-
-        <a href="contacto.html" class="btn btn--primary btn--sm footer__btn">
-          Hablemos <span aria-hidden="true">→</span>
-        </a>
+        <div class="hero-visual">
+        <svg class="hv-waves" viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wv1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#1d4ed8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="dot2"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#60a5fa" stop-opacity="0"/></radialGradient>
+  </defs>
+  <path d="M0 274C 140.0 214 244.99999999999997 344 385.00000000000006 264S 595.0 164 700 244" fill="none" stroke="url(#wv1)" stroke-width="2.5"/>
+  <path d="M0 324C 175.0 274 280.0 394 420.0 314S 630.0 224 700 304" fill="none" stroke="url(#wv1)" stroke-width="1.6"/>
+  <circle cx="23" cy="31" r="1.4" fill="url(#dot2)"/><circle cx="90" cy="84" r="2.0" fill="url(#dot2)"/><circle cx="157" cy="137" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="224" cy="190" r="1.4" fill="url(#dot2)"/><circle cx="291" cy="243" r="2.0" fill="url(#dot2)"/><circle cx="358" cy="296" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="425" cy="349" r="1.4" fill="url(#dot2)"/><circle cx="492" cy="402" r="2.0" fill="url(#dot2)"/><circle cx="559" cy="455" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="626" cy="48" r="1.4" fill="url(#dot2)"/><circle cx="693" cy="101" r="2.0" fill="url(#dot2)"/><circle cx="60" cy="154" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="127" cy="207" r="1.4" fill="url(#dot2)"/><circle cx="194" cy="260" r="2.0" fill="url(#dot2)"/><circle cx="261" cy="313" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="328" cy="366" r="1.4" fill="url(#dot2)"/><circle cx="395" cy="419" r="2.0" fill="url(#dot2)"/><circle cx="462" cy="12" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="529" cy="65" r="1.4" fill="url(#dot2)"/><circle cx="596" cy="118" r="2.0" fill="url(#dot2)"/><circle cx="663" cy="171" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="30" cy="224" r="1.4" fill="url(#dot2)"/><circle cx="97" cy="277" r="2.0" fill="url(#dot2)"/><circle cx="164" cy="330" r="2.5999999999999996" fill="url(#dot2)"/><circle cx="231" cy="383" r="1.4" fill="url(#dot2)"/><circle cx="298" cy="436" r="2.0" fill="url(#dot2)"/>
+</svg>
+        <div class="device-laptop">
+          <div class="laptop-screen">
+            <div class="screen-topbar"><svg class="logo-mark" width="16" height="16" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="lg3" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#5aa4ff"/><stop offset="1" stop-color="#1d4ed8"/>
+  </linearGradient></defs>
+  <rect x="1" y="1" width="38" height="38" rx="10" fill="url(#lg3)"/>
+  <path d="M12 13h16l-10.5 12H28" fill="none" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="28.5" cy="12.5" r="2.1" fill="#bfe0ff"/>
+</svg><span>ZARREL</span></div>
+            <div class="screen-line">Soluciones digitales</div>
+            <div class="screen-line dim">a la medida de tus ideas</div>
+            <span class="screen-btn">Hablemos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></span>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+        <div class="device-phone">
+          <div class="phone-screen">
+            <div class="phone-logo"><svg class="logo-mark" width="13" height="13" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="lg4" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#5aa4ff"/><stop offset="1" stop-color="#1d4ed8"/>
+  </linearGradient></defs>
+  <rect x="1" y="1" width="38" height="38" rx="10" fill="url(#lg4)"/>
+  <path d="M12 13h16l-10.5 12H28" fill="none" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="28.5" cy="12.5" r="2.1" fill="#bfe0ff"/>
+</svg><span>ZARREL</span></div>
+            <div class="phone-line">Soluciones digitales a la medida de tus ideas</div>
+            <span class="phone-btn">Hablemos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></span>
+          </div>
+        </div>
+        <div class="float-card fc1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg></div>
+        <div class="float-card fc2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg></div>
+        <div class="float-card fc3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 8 5 12 9 16"/><polyline points="15 8 19 12 15 16"/></svg></div>
+        <div class="float-card fc4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="20" x2="5" y2="12"/><line x1="12" y1="20" x2="12" y2="7"/><line x1="19" y1="20" x2="19" y2="14"/></svg></div>
+        <div class="float-card fc5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v9l7.8 4.5"/><circle cx="12" cy="12" r="9"/></svg></div>
       </div>
-
-      <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2026 ZARREL. Todos los derechos reservados.</p>
-        <ul class="footer__social" aria-label="Redes sociales">
-          <li>
-            <a href="#" aria-label="LinkedIn de ZARREL">
-              <svg width="18" height="18" aria-hidden="true"><use href="#icon-linkedin"/></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="Instagram de ZARREL">
-              <svg width="18" height="18" aria-hidden="true"><use href="#icon-instagram"/></svg>
-            </a>
-          </li>
-          <li>
-            <a href="#" aria-label="WhatsApp de ZARREL">
-              <svg width="18" height="18" aria-hidden="true"><use href="#icon-whatsapp"/></svg>
-            </a>
-          </li>
-        </ul>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <script src="js/script.js"></script>
+  <section class="section">
+    <div class="container">
+      <div class="about-split">
+        <div class="about-copy reveal">
+          <span class="eyebrow">Sobre nosotros</span>
+          <h2>Tecnología, diseño y estrategia para crecer juntos</h2>
+          <p>Somos un equipo multidisciplinario apasionado por la tecnología, el diseño y la innovación. Nos enfocamos en entender las necesidades de cada cliente para crear soluciones a medida que generen resultados reales.</p>
+          <div class="feature-mini-list">
+            <div class="feature-mini"><span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M2.6 19c0-3 2.7-5 5.9-5s5.9 2 5.9 5"/><circle cx="16.6" cy="9" r="2.3"/><path d="M15 14.3c2.6.4 4.4 2 4.4 4.2"/></svg></span><span>Equipo multidisciplinario</span></div>
+            <div class="feature-mini"><span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></span><span>Soluciones personalizadas</span></div>
+            <div class="feature-mini"><span class="icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="15 6 21 6 21 12"/></svg></span><span>Resultados que generan impacto</span></div>
+          </div>
+        </div>
+        <div class="reveal"><div class="tech-panel">
+        <svg class="hv-waves" viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="wv5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#1d4ed8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="dot6"><stop offset="0" stop-color="#60a5fa"/><stop offset="1" stop-color="#60a5fa" stop-opacity="0"/></radialGradient>
+  </defs>
+  <path d="M0 316C 140.0 256 244.99999999999997 386 385.00000000000006 306S 595.0 206 700 286" fill="none" stroke="url(#wv5)" stroke-width="2.5"/>
+  <path d="M0 366C 175.0 316 280.0 436 420.0 356S 630.0 266 700 346" fill="none" stroke="url(#wv5)" stroke-width="1.6"/>
+  <circle cx="92" cy="124" r="1.4" fill="url(#dot6)"/><circle cx="159" cy="177" r="2.0" fill="url(#dot6)"/><circle cx="226" cy="230" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="293" cy="283" r="1.4" fill="url(#dot6)"/><circle cx="360" cy="336" r="2.0" fill="url(#dot6)"/><circle cx="427" cy="389" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="494" cy="442" r="1.4" fill="url(#dot6)"/><circle cx="561" cy="35" r="2.0" fill="url(#dot6)"/><circle cx="628" cy="88" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="695" cy="141" r="1.4" fill="url(#dot6)"/><circle cx="62" cy="194" r="2.0" fill="url(#dot6)"/><circle cx="129" cy="247" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="196" cy="300" r="1.4" fill="url(#dot6)"/><circle cx="263" cy="353" r="2.0" fill="url(#dot6)"/><circle cx="330" cy="406" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="397" cy="459" r="1.4" fill="url(#dot6)"/><circle cx="464" cy="52" r="2.0" fill="url(#dot6)"/><circle cx="531" cy="105" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="598" cy="158" r="1.4" fill="url(#dot6)"/><circle cx="665" cy="211" r="2.0" fill="url(#dot6)"/><circle cx="32" cy="264" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="99" cy="317" r="1.4" fill="url(#dot6)"/><circle cx="166" cy="370" r="2.0" fill="url(#dot6)"/><circle cx="233" cy="423" r="2.5999999999999996" fill="url(#dot6)"/><circle cx="300" cy="16" r="1.4" fill="url(#dot6)"/><circle cx="367" cy="69" r="2.0" fill="url(#dot6)"/>
+</svg>
+        <div class="float-card fc1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.8 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.8-3.8-9s1.3-6.4 3.8-9z"/></svg></div>
+        <div class="float-card fc2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="3" y1="9.3" x2="21" y2="9.3"/><circle cx="6" cy="7.1" r=".6" fill="currentColor" stroke="none"/></svg></div>
+        <div class="float-card fc3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="20" x2="5" y2="12"/><line x1="12" y1="20" x2="12" y2="7"/><line x1="19" y1="20" x2="19" y2="14"/></svg></div>
+      </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-tight stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8l9-5 9 5-9 5-9-5z"/><path d="M3 8v9l9 5 9-5V8"/><line x1="12" y1="13" x2="12" y2="22"/></svg></span><div><strong>25+</strong><small>Proyectos completados</small></div></div>
+        <div class="stat-card reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="8" r="3"/><path d="M2.6 19c0-3 2.7-5 5.9-5s5.9 2 5.9 5"/><circle cx="16.6" cy="9" r="2.3"/><path d="M15 14.3c2.6.4 4.4 2 4.4 4.2"/></svg></span><div><strong>10+</strong><small>Clientes satisfechos</small></div></div>
+        <div class="stat-card reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5.2"/><path d="M9 12.5 7.5 21l4.5-2.5 4.5 2.5-1.5-8.5"/></svg></span><div><strong>5</strong><small>Años de experiencia</small></div></div>
+        <div class="stat-card reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2.3 2.3L15.5 10"/></svg></span><div><strong>100%</strong><small>Comprometidos contigo</small></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="heading-block">
+          <span class="eyebrow">Proyectos destacados</span>
+          <h2>Algunos de nuestros trabajos</h2>
+        </div>
+        <a href="proyectos.html" class="link-underline" style="color:var(--blue-600)">Ver todos los proyectos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="project-thumb"><svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pt7" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#132455"/><stop offset="1" stop-color="#080f28"/>
+    </linearGradient></defs>
+    <rect width="320" height="240" fill="url(#pt7)"/><rect x="18" y="18" width="284" height="26" rx="6" fill="rgba(255,255,255,.14)"/>
+        <rect x="18" y="56" width="70" height="150" rx="8" fill="rgba(255,255,255,.14)" opacity=".7"/>
+        <rect x="100" y="56" width="90" height="42" rx="8" fill="rgba(255,255,255,.14)"/>
+        <rect x="200" y="56" width="102" height="42" rx="8" fill="#5aa4ff" opacity=".55"/>
+        <polyline points="100,150 130,120 158,138 190,100 220,118 250,90 280,110" fill="none" stroke="#5aa4ff" stroke-width="4" stroke-linecap="round"/>
+        <rect x="100" y="170" width="20" height="36" fill="#5aa4ff" opacity=".6"/>
+        <rect x="128" y="150" width="20" height="56" fill="#5aa4ff" opacity=".8"/>
+        <rect x="156" y="165" width="20" height="41" fill="#5aa4ff" opacity=".5"/>
+        <rect x="184" y="140" width="20" height="66" fill="#5aa4ff"/></svg></div>
+          <div class="project-body"><span class="tag">Web</span><h4>Plataforma de gestión</h4><p class="small">Sistema administrativo con panel de analíticas en tiempo real.</p><a href="proyectos.html" class="link-underline">Ver proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></div>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-thumb"><svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pt8" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#132455"/><stop offset="1" stop-color="#080f28"/>
+    </linearGradient></defs>
+    <rect width="320" height="240" fill="url(#pt8)"/><rect x="24" y="30" width="120" height="90" rx="8" fill="rgba(255,255,255,.14)"/>
+        <rect x="152" y="30" width="120" height="90" rx="8" fill="#5aa4ff" opacity=".45"/>
+        <rect x="24" y="130" width="120" height="80" rx="8" fill="#5aa4ff" opacity=".55"/>
+        <rect x="152" y="130" width="120" height="80" rx="8" fill="rgba(255,255,255,.14)"/>
+        <circle cx="250" cy="185" r="12" fill="#fff" opacity=".85"/>
+        <path d="M170 150h8l6 28h34l6-20h-40" fill="none" stroke="#fff" stroke-width="3" opacity=".8"/></svg></div>
+          <div class="project-body"><span class="tag">E-commerce</span><h4>Tienda en línea</h4><p class="small">E-commerce moderno y seguro con pasarela de pagos.</p><a href="proyectos.html" class="link-underline">Ver proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></div>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-thumb"><svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pt9" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#132455"/><stop offset="1" stop-color="#080f28"/>
+    </linearGradient></defs>
+    <rect width="320" height="240" fill="url(#pt9)"/><rect x="26" y="20" width="76" height="200" rx="16" fill="rgba(255,255,255,.14)" opacity=".5"/>
+        <rect x="122" y="10" width="76" height="220" rx="16" fill="rgba(255,255,255,.14)"/>
+        <rect x="218" y="26" width="76" height="188" rx="16" fill="rgba(255,255,255,.14)" opacity=".5"/>
+        <rect x="134" y="30" width="52" height="10" rx="3" fill="#5aa4ff"/>
+        <rect x="134" y="50" width="52" height="52" rx="8" fill="#5aa4ff" opacity=".5"/>
+        <rect x="134" y="110" width="52" height="8" rx="3" fill="#5aa4ff" opacity=".7"/>
+        <rect x="134" y="126" width="34" height="8" rx="3" fill="#5aa4ff" opacity=".4"/>
+        <circle cx="160" cy="205" r="10" fill="#5aa4ff"/></svg></div>
+          <div class="project-body"><span class="tag">Apps</span><h4>Aplicación móvil</h4><p class="small">App de seguimiento y estadísticas para dispositivos móviles.</p><a href="proyectos.html" class="link-underline">Ver proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></div>
+        </div>
+        <div class="project-card reveal">
+          <div class="project-thumb"><svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="pt10" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef2fa"/><stop offset="1" stop-color="#dbe6fb"/>
+    </linearGradient></defs>
+    <rect width="320" height="240" fill="url(#pt10)"/><rect x="40" y="60" width="120" height="76" rx="10" fill="#c7d6f5"/>
+        <rect x="150" y="90" width="120" height="76" rx="10" fill="#2563eb" opacity=".55"/>
+        <circle cx="70" cy="90" r="14" fill="#2563eb"/>
+        <rect x="94" y="83" width="46" height="8" rx="3" fill="#2563eb" opacity=".7"/>
+        <rect x="94" y="98" width="34" height="6" rx="3" fill="#2563eb" opacity=".4"/>
+        <circle cx="180" cy="120" r="10" fill="#fff" opacity=".8"/>
+        <rect x="198" y="115" width="40" height="6" rx="3" fill="#fff" opacity=".7"/></svg></div>
+          <div class="project-body"><span class="tag">Diseño</span><h4>Identidad visual</h4><p class="small">Rediseño de marca y materiales gráficos para empresa.</p><a href="proyectos.html" class="link-underline">Ver proyecto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div class="heading-block">
+          <span class="eyebrow">Servicios</span>
+          <h2>¿Qué podemos hacer por ti?</h2>
+        </div>
+      </div>
+      <div class="services-grid">
+        <div class="service-mini reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span><h4>Desarrollo Web</h4><p>Sitios web modernos, rápidos y escalables.</p></div>
+        <div class="service-mini reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><line x1="10" y1="19" x2="14" y2="19"/></svg></span><h4>Aplicaciones Móviles</h4><p>Apps iOS y Android enfocadas en la mejor experiencia de usuario.</p></div>
+        <div class="service-mini reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3l7 7-8.5 8.5-4.5 1.5 1.5-4.5L14 3z"/><line x1="4" y1="20" x2="8.5" y2="15.5"/></svg></span><h4>Diseño Gráfico</h4><p>Identidades visuales que comunican y conectan con tu marca.</p></div>
+        <div class="service-mini reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M3 4h2l2.4 11.2A2 2 0 009.4 17h8.2a2 2 0 002-1.6L21 8H6"/></svg></span><h4>E-commerce</h4><p>Tiendas en línea seguras, intuitivas y optimizadas.</p></div>
+        <div class="service-mini reveal"><span class="icon-sq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10v4a1 1 0 001 1h2l4 4V5L6 9H4a1 1 0 00-1 1z"/><path d="M14 8a4 4 0 010 8"/><path d="M17 5a8 8 0 010 14"/></svg></span><h4>Marketing Digital</h4><p>Estrategias digitales para aumentar tu visibilidad y tus resultados.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-copy">
+        <svg class="logo-mark" width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs><linearGradient id="lg11" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#5aa4ff"/><stop offset="1" stop-color="#1d4ed8"/>
+  </linearGradient></defs>
+  <rect x="1" y="1" width="38" height="38" rx="10" fill="url(#lg11)"/>
+  <path d="M12 13h16l-10.5 12H28" fill="none" stroke="#ffffff" stroke-width="3.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="28.5" cy="12.5" r="2.1" fill="#bfe0ff"/>
+</svg>
+        <div>
+          <h3>¿Tienes un proyecto en mente?</h3>
+          <p>Hablemos y hagámoslo realidad.</p>
+        </div>
+      </div>
+      <a href="contacto.html" class="btn btn-primary">Contáctanos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg></a>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; <span data-year></span> ZARREL. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos y condiciones</a>
+      </div>
+      <button class="back-top" data-back-top aria-label="Volver arriba"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg></button>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
 </body>
 </html>
