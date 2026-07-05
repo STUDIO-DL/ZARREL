@@ -10,12 +10,13 @@
   const navToggle = document.getElementById('nav-toggle');
   const navMenu = document.getElementById('nav-menu');
   const navLinks = document.querySelectorAll('.navbar__link');
+  const sidebarLinks = document.querySelectorAll('.sidebar__link');
   const revealElements = document.querySelectorAll('.reveal');
-  const statNumbers = document.querySelectorAll('.stat-card__number');
+  const statNumbers = document.querySelectorAll('.about__stat-number');
 
   /* ── Navbar scroll glass effect ── */
   function handleScroll() {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 40 || document.body.classList.contains('nav-open')) {
       navbar.classList.add('is-scrolled');
     } else {
       navbar.classList.remove('is-scrolled');
@@ -29,7 +30,7 @@
     navToggle.classList.toggle('is-open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
     navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
-    document.body.style.overflow = isOpen ? 'hidden' : '';
+    document.body.classList.toggle('nav-open', isOpen);
   }
 
   function closeMobileMenu() {
@@ -37,7 +38,7 @@
     navToggle.classList.remove('is-open');
     navToggle.setAttribute('aria-expanded', 'false');
     navToggle.setAttribute('aria-label', 'Abrir menú');
-    document.body.style.overflow = '';
+    document.body.classList.remove('nav-open');
   }
 
   /* ── Smooth scroll for anchor links ── */
@@ -51,7 +52,7 @@
     e.preventDefault();
     closeMobileMenu();
 
-    const offset = navbar.offsetHeight + 8;
+    const offset = navbar.getBoundingClientRect().bottom + 12;
     const top = target.getBoundingClientRect().top + window.scrollY - offset;
 
     window.scrollTo({ top, behavior: 'smooth' });
@@ -76,6 +77,15 @@
         link.classList.add('navbar__link--active');
       } else {
         link.classList.remove('navbar__link--active');
+      }
+    });
+
+    sidebarLinks.forEach(function (link) {
+      const section = link.dataset.section;
+      if (section === current) {
+        link.classList.add('sidebar__link--active');
+      } else {
+        link.classList.remove('sidebar__link--active');
       }
     });
   }
@@ -170,6 +180,12 @@
     if (window.innerWidth > 768) {
       closeMobileMenu();
     }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!navMenu.classList.contains('is-open')) return;
+    if (navbar.contains(e.target)) return;
+    closeMobileMenu();
   });
 
   /* ── Init ── */
