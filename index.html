@@ -70,6 +70,12 @@
     <symbol id="icon-design" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <path d="M12 19l-7-7 7-7 7 7-7 7z"/><path d="M5 12h14"/>
     </symbol>
+    <symbol id="icon-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/>
+    </symbol>
+    <symbol id="icon-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>
+    </symbol>
     <symbol id="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
       <circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/><path d="M2 4h2l2.5 12H19l2-8H6"/>
     </symbol>
@@ -400,50 +406,68 @@
     <!-- Servicios -->
     <section class="services" id="servicios" aria-labelledby="services-title">
       <div class="container">
-        <div class="section-header section-header--center reveal">
-          <span class="section-label">SERVICIOS</span>
+        <header class="services__header reveal">
+          <div class="services__header-row">
+            <span class="section-label">SERVICIOS</span>
+            <a href="servicios.html" class="section-link">Ver todos los servicios <span aria-hidden="true">→</span></a>
+          </div>
           <h2 class="section-title" id="services-title">¿Qué podemos hacer por ti?</h2>
-        </div>
+        </header>
 
         <div class="services__grid">
-          <article class="service-card reveal">
-            <div class="service-card__icon">
-              <svg width="28" height="28" aria-hidden="true"><use href="#icon-web"/></svg>
+          <article class="service-card glass-card reveal">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="22" height="22" aria-hidden="true"><use href="#icon-code"/></svg>
             </div>
             <h3 class="service-card__title">Desarrollo Web</h3>
-            <p class="service-card__text">Sitios y aplicaciones web modernas, rápidas y escalables.</p>
+            <p class="service-card__text">Sitios web modernos, rápidos y escalables a la medida de tu negocio.</p>
+            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Desarrollo Web">
+              <span aria-hidden="true">→</span>
+            </a>
           </article>
 
-          <article class="service-card reveal reveal--delay">
-            <div class="service-card__icon">
-              <svg width="28" height="28" aria-hidden="true"><use href="#icon-mobile"/></svg>
+          <article class="service-card glass-card reveal reveal--delay">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="22" height="22" aria-hidden="true"><use href="#icon-mobile"/></svg>
             </div>
-            <h3 class="service-card__title">Apps Móviles</h3>
-            <p class="service-card__text">Experiencias nativas e híbridas para iOS y Android.</p>
+            <h3 class="service-card__title">Aplicaciones Móviles</h3>
+            <p class="service-card__text">Apps iOS y Android enfocadas en la mejor experiencia de usuario.</p>
+            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Aplicaciones Móviles">
+              <span aria-hidden="true">→</span>
+            </a>
           </article>
 
-          <article class="service-card reveal reveal--delay-2">
-            <div class="service-card__icon">
-              <svg width="28" height="28" aria-hidden="true"><use href="#icon-design"/></svg>
+          <article class="service-card glass-card reveal reveal--delay-2">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="22" height="22" aria-hidden="true"><use href="#icon-pencil"/></svg>
             </div>
             <h3 class="service-card__title">Diseño Gráfico</h3>
-            <p class="service-card__text">Identidad visual, branding y materiales creativos.</p>
+            <p class="service-card__text">Identidades visuales que comunican y conectan con tu marca.</p>
+            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Diseño Gráfico">
+              <span aria-hidden="true">→</span>
+            </a>
           </article>
 
-          <article class="service-card reveal reveal--delay-3">
-            <div class="service-card__icon">
-              <svg width="28" height="28" aria-hidden="true"><use href="#icon-cart"/></svg>
+          <article class="service-card glass-card reveal reveal--delay-3">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="22" height="22" aria-hidden="true"><use href="#icon-cart"/></svg>
             </div>
             <h3 class="service-card__title">E-commerce</h3>
-            <p class="service-card__text">Tiendas online optimizadas para vender más.</p>
+            <p class="service-card__text">Tiendas online seguras, intuitivas y optimizadas para vender más.</p>
+            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar E-commerce">
+              <span aria-hidden="true">→</span>
+            </a>
           </article>
 
-          <article class="service-card reveal reveal--delay-4">
-            <div class="service-card__icon">
-              <svg width="28" height="28" aria-hidden="true"><use href="#icon-marketing"/></svg>
+          <article class="service-card glass-card reveal reveal--delay-4">
+            <div class="service-card__icon" aria-hidden="true">
+              <svg width="22" height="22" aria-hidden="true"><use href="#icon-trending"/></svg>
             </div>
             <h3 class="service-card__title">Marketing Digital</h3>
-            <p class="service-card__text">Estrategias digitales para aumentar tu alcance.</p>
+            <p class="service-card__text">Estrategias digitales para aumentar tu visibilidad y tus resultados.</p>
+            <a href="servicios.html" class="service-card__arrow" aria-label="Explorar Marketing Digital">
+              <span aria-hidden="true">→</span>
+            </a>
           </article>
         </div>
       </div>
