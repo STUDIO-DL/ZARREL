@@ -1,0 +1,54 @@
+<svg width="260" height="520" viewBox="0 0 260 520" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <linearGradient id="phoneBody" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2b3350"/>
+      <stop offset="100%" stop-color="#0e1224"/>
+    </linearGradient>
+    <linearGradient id="phoneScreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#13234f"/>
+      <stop offset="100%" stop-color="#0A1128"/>
+    </linearGradient>
+    <linearGradient id="phoneBtn" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#2563EB"/>
+    </linearGradient>
+    <filter id="phoneShadow" x="-40%" y="-30%" width="180%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="12"/>
+      <feOffset dy="18" result="off"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#phoneShadow)">
+    <!-- side buttons -->
+    <rect x="0" y="120" width="4" height="36" rx="2" fill="#1a1f33"/>
+    <rect x="0" y="168" width="4" height="56" rx="2" fill="#1a1f33"/>
+    <rect x="256" y="150" width="4" height="70" rx="2" fill="#1a1f33"/>
+
+    <!-- body -->
+    <rect x="6" y="6" width="248" height="508" rx="34" fill="url(#phoneBody)"/>
+    <!-- screen -->
+    <rect x="16" y="20" width="228" height="480" rx="24" fill="url(#phoneScreen)"/>
+
+    <!-- speaker -->
+    <rect x="108" y="34" width="44" height="5" rx="2.5" fill="#2a3252"/>
+
+    <!-- screen content -->
+    <g transform="translate(38,74)">
+      <rect x="0" y="0" width="20" height="20" rx="6" fill="url(#phoneBtn)"/>
+      <text x="28" y="15" fill="#ffffff" font-size="13" font-weight="700" letter-spacing="0.5">ZARREL</text>
+
+      <text x="0" y="60" fill="#ffffff" font-size="16" font-weight="600">Soluciones</text>
+      <text x="0" y="83" fill="#ffffff" font-size="16" font-weight="600">digitales a la</text>
+      <text x="0" y="106" fill="#ffffff" font-size="16" font-weight="600">medida de</text>
+      <text x="0" y="129" fill="#ffffff" font-size="16" font-weight="600">tus ideas</text>
+
+      <rect x="0" y="152" width="96" height="30" rx="8" fill="url(#phoneBtn)"/>
+      <text x="14" y="172" fill="#ffffff" font-size="12" font-weight="600">Hablemos  →</text>
+    </g>
+
+    <!-- home indicator -->
+    <rect x="98" y="484" width="64" height="4.5" rx="2.2" fill="#3a4266"/>
+  </g>
+</svg>

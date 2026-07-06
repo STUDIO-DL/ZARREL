@@ -1,109 +1,81 @@
-// =========================================================
-// ZARREL — main.js (vanilla JS, sin dependencias)
-// =========================================================
-
+// ============================================
+// ZARREL — main.js
+// ============================================
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- Menú móvil ---- */
-  const toggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
-  if (toggle && navLinks) {
-    toggle.addEventListener('click', () => {
-      const isOpen = navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', isOpen);
-      toggle.innerHTML = isOpen ? iconClose() : iconMenu();
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.innerHTML = iconMenu();
-      });
-    });
-  }
-
-  function iconMenu(){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>';
-  }
-  function iconClose(){
-    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>';
-  }
-
-  /* ---- Tabs de filtro (Servicios / Proyectos) ---- */
-  document.querySelectorAll('[data-tabs]').forEach(group => {
-    const buttons = group.querySelectorAll('.tab-btn');
-    const targetSelector = group.getAttribute('data-tabs');
-    const items = document.querySelectorAll(targetSelector);
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        buttons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
-
-        items.forEach(item => {
-          const cat = item.getAttribute('data-category');
-          const show = filter === 'todos' || filter === cat;
-          item.style.display = show ? '' : 'none';
-        });
-      });
-    });
-  });
-
-  /* ---- Reveal on scroll ---- */
-  const revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && revealEls.length) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('in'));
-  }
-
-  /* ---- Año dinámico en footer ---- */
-  document.querySelectorAll('[data-year]').forEach(el => {
+  // Dynamic footer year
+  document.querySelectorAll('#footer-year').forEach(el => {
     el.textContent = new Date().getFullYear();
   });
 
-  /* ---- Botón volver arriba ---- */
-  document.querySelectorAll('[data-back-top]').forEach(btn => {
-    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  });
+  // Render Lucide icons
+  if (window.lucide) lucide.createIcons();
 
-  /* ---- Formulario de contacto ---- */
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      const requiredFields = form.querySelectorAll('[required]');
-      let valid = true;
-      requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-          valid = false;
-          field.style.borderColor = '#eb4b4b';
-        } else {
-          field.style.borderColor = '';
-        }
-      });
-      if (!valid) {
-        e.preventDefault();
-      }
+  // Navbar background on scroll
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
     });
   }
 
-  /* ---- Navbar: sombra al hacer scroll ---- */
-  const nav = document.querySelector('.navbar');
-  if (nav) {
-    const onScroll = () => {
-      nav.style.boxShadow = window.scrollY > 8 ? '0 8px 24px -12px rgba(0,0,0,.4)' : 'none';
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+  // Mobile menu toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const mobileMenu = document.querySelector('.mobile-menu');
+  if (navToggle && mobileMenu) {
+    navToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+  }
+
+  // Reveal-on-scroll animation
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => observer.observe(el));
+  }
+
+  // Filter tabs (used on servicios.html and proyectos.html)
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const filterableCards = document.querySelectorAll('.filterable-card');
+  if (filterTabs.length && filterableCards.length) {
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        filterableCards.forEach(card => {
+          const show = filter === 'todos' || card.dataset.category === filter;
+          card.classList.toggle('hidden', !show);
+        });
+      });
+    });
+  }
+
+  // Contact form (contacto.html)
+  // NOTE: this form posts to Formspree. Replace YOUR_FORM_ID in contacto.html
+  // with your real endpoint from https://formspree.io — no JS changes needed
+  // for the submission itself, this just adds a friendlier pending state.
+  const contactForm = document.querySelector('#contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', () => {
+      const btn = contactForm.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.disabled = true;
+        btn.dataset.originalText = btn.innerHTML;
+        btn.innerHTML = 'Enviando...';
+      }
+    });
   }
 
 });
