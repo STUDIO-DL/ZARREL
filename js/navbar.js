@@ -1,9 +1,9 @@
 /**
  * ZARREL — navbar.js
- * Liquid-glass navbar scroll behaviour.
- * On load the bar is nearly transparent; after the user scrolls past a
- * small threshold we smoothly increase blur + opacity via the .is-scrolled
- * class (styled in css/style.css).
+ * Light-glass navbar scroll behaviour (centered above the hero card on the
+ * white page). On load the bar is subtly translucent; after the user scrolls
+ * past a small threshold we smoothly increase blur + opacity via the
+ * .is-scrolled class (styled in css/style.css).
  */
 
 (function () {

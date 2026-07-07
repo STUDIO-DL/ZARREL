@@ -1,22 +1,36 @@
 /* ==========================================================================
    ZARREL — Responsive overrides
-   Mobile-first base lives in style.css; these breakpoints refine the layout
-   for tablet and mobile. Goal: pixel-clean, zero horizontal scroll.
+   Base layout lives in style.css (desktop-first floating card). These
+   breakpoints tune the card height, page gutters and nav for smaller
+   screens. Goal: elegant spacing, rounded corners preserved, zero
+   horizontal scroll at 375 / 768 / 1024 / 1440.
    ========================================================================== */
 
-/* --- Large desktop: widen breathing room -------------------------------- */
+/* --- Large desktop: a touch more height + breathing room ---------------- */
 @media (min-width: 1440px) {
   :root {
-    --navbar-top: 2rem;
+    --card-height: 620px;
+    --page-gutter: 3rem;
   }
 }
 
-/* --- Tablet (<= 900px) --------------------------------------------------- */
-@media (max-width: 900px) {
+/* --- Small desktop / large tablet (<= 1024px) --------------------------- */
+@media (max-width: 1024px) {
+  :root {
+    --card-height: 520px;
+    --page-gutter: 2rem;
+  }
+}
+
+/* --- Tablet (<= 768px) -------------------------------------------------- */
+@media (max-width: 768px) {
+  :root {
+    --card-height: 460px;
+    --page-gutter: 1.5rem;
+  }
+
   .navbar {
-    padding: 0.8rem 1.5rem;
-    gap: 0.55rem;
-    width: min(92vw, 640px);
+    padding: 0.75rem 1.5rem;
   }
 
   .navbar__links {
@@ -26,38 +40,44 @@
   }
 
   .hero__content {
-    gap: var(--space-md);
+    max-width: 100%;
   }
 
   .hero__headline {
-    max-width: 20ch;
+    max-width: 22ch;
   }
 }
 
-/* --- Mobile (<= 600px) --------------------------------------------------- */
+/* --- Mobile (<= 600px) -------------------------------------------------- */
 @media (max-width: 600px) {
   :root {
-    --navbar-top: 1rem;
+    --card-height: 400px;
+    --page-gutter: 1rem;
+    --radius-card: 22px;
+  }
+
+  .page {
+    padding-top: var(--space-md);
+    gap: 1.25rem;
   }
 
   .navbar {
-    width: calc(100vw - 1.5rem);
-    padding: 0.75rem 1rem;
+    width: 100%;
+    padding: 0.7rem 1rem;
     border-radius: var(--radius-md);
   }
 
   .navbar__links {
-    gap: 0.75rem 1.1rem;
+    gap: 0.6rem 1rem;
   }
 
   .navbar__link {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
 
   .hero__content {
-    padding: 0 var(--space-md);
-    /* leave room below the taller wrapped navbar */
-    padding-top: 6.5rem;
+    padding: 1.5rem;
+    gap: var(--space-md);
   }
 
   .hero__headline {
@@ -77,21 +97,12 @@
   .btn {
     width: 100%;
   }
-
-  .hero__scroll {
-    display: none;   /* declutter small screens */
-  }
 }
 
-/* --- Short landscape phones: keep hero usable --------------------------- */
-@media (max-height: 520px) and (orientation: landscape) {
-  .hero {
-    min-height: 640px;
-  }
-
-  .hero__content {
-    padding-top: 7rem;
-    padding-bottom: 2.5rem;
+/* --- Very small phones (<= 380px): keep card compact -------------------- */
+@media (max-width: 380px) {
+  :root {
+    --card-height: 360px;
   }
 }
 

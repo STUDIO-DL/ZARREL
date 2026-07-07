@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="ZARREL — Diseñamos y desarrollamos experiencias digitales que impulsan el futuro. Páginas web, apps móviles, identidad visual y soluciones tecnológicas.">
-  <meta name="theme-color" content="#05070d">
+  <meta name="theme-color" content="#fafafa">
 
   <title>ZARREL — Experiencias Digitales</title>
 
@@ -26,48 +26,16 @@
 
   <!--
     ============================================================
-    ZARREL — Phase 1: Hero-only landing page
+    ZARREL — Phase 1: Floating card hero (AKQA-inspired layout)
     ============================================================
-
-    VIDEO ASSET REQUIRED:
-    Drop your cinematic hero video at:
-      /assets/videos/hero.mp4
-    Recommended: H.264, 1920×1080+, muted loop, ≤15 MB.
-    Until the file is present the page uses a CSS gradient fallback
+    Composition: white page, centered nav above a rounded video
+    card. The card clips the hero video via overflow:hidden.
+    Video asset lives at /assets/videos/hero.mp4.
   -->
 
-  <main class="hero" id="hero">
+  <div class="page">
 
-    <!-- Fallback layer (CSS gradient + static image). Always painted beneath
-         the video; main.js reveals the image on video error/missing file. -->
-    <div class="hero__fallback" aria-hidden="true"></div>
-
-    <!--
-      Background video — decorative, autoplay + muted + loop + playsinline.
-      preload="metadata" keeps first paint fast (fetch just enough to start).
-      poster shows a lightweight gradient still before the first frame paints.
-      Intrinsic width/height reserve the aspect box to avoid layout shift.
-    -->
-    <video
-      class="hero__video"
-      id="hero-video"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="metadata"
-      width="1920"
-      height="1080"
-      poster="assets/images/hero-fallback.svg"
-      aria-hidden="true"
-    >
-      <source src="assets/videos/hero.mp4" type="video/mp4">
-    </video>
-
-    <!-- Readability overlay -->
-    <div class="hero__overlay" aria-hidden="true"></div>
-
-    <!-- Navigation — top center, liquid glass -->
+    <!-- Navigation — centered above the hero card, light glass -->
     <header class="navbar reveal" id="navbar" role="banner">
       <a href="/" class="navbar__logo" aria-label="ZARREL — Inicio">ZARREL</a>
       <nav aria-label="Navegación principal">
@@ -80,33 +48,60 @@
       </nav>
     </header>
 
-    <!-- Hero content -->
-    <section class="hero__content" aria-labelledby="hero-heading">
+    <!-- Hero — rounded floating card that clips the video -->
+    <main class="hero reveal" id="hero" style="--reveal-delay: 0.1s">
 
-      <h1 class="hero__headline reveal" id="hero-heading"
-          style="--reveal-delay: 0.15s">
-        Diseñamos y desarrollamos experiencias digitales que impulsan el futuro.
-      </h1>
+      <!-- Fallback layer (CSS gradient + static image). Painted beneath the
+           video; main.js reveals the image on video error/missing file. -->
+      <div class="hero__fallback" aria-hidden="true"></div>
 
-      <p class="hero__subtitle reveal" style="--reveal-delay: 0.3s">
-        Creamos páginas web, aplicaciones móviles, identidad visual y soluciones
-        tecnológicas para empresas modernas.
-      </p>
+      <!--
+        Background video — decorative, autoplay + muted + loop + playsinline.
+        preload="metadata" keeps first paint fast. object-fit:cover + the
+        card's overflow:hidden keep it clipped to the rounded corners.
+      -->
+      <video
+        class="hero__video"
+        id="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        width="1920"
+        height="1080"
+        poster="assets/images/hero-fallback.svg"
+        aria-hidden="true"
+      >
+        <source src="assets/videos/hero.mp4" type="video/mp4">
+      </video>
 
-      <div class="hero__actions reveal float-soft" style="--reveal-delay: 0.45s">
-        <a href="#servicios" class="btn btn--primary">Ver Servicios</a>
-        <a href="#proyectos" class="btn btn--ghost">Nuestros Proyectos</a>
-      </div>
+      <!-- Readability overlay -->
+      <div class="hero__overlay" aria-hidden="true"></div>
 
-    </section>
+      <!-- Hero content — left-aligned, vertically centered inside card -->
+      <section class="hero__content" aria-labelledby="hero-heading">
 
-    <!-- Scroll cue (decorative) -->
-    <div class="hero__scroll reveal" aria-hidden="true" style="--reveal-delay: 0.7s">
-      <span>Scroll</span>
-      <span class="hero__scroll-line"></span>
-    </div>
+        <h1 class="hero__headline reveal" id="hero-heading"
+            style="--reveal-delay: 0.25s">
+          Diseñamos y desarrollamos experiencias digitales que impulsan el futuro.
+        </h1>
 
-  </main>
+        <p class="hero__subtitle reveal" style="--reveal-delay: 0.4s">
+          Creamos páginas web, aplicaciones móviles, identidad visual y soluciones
+          tecnológicas para empresas modernas.
+        </p>
+
+        <div class="hero__actions reveal" style="--reveal-delay: 0.55s">
+          <a href="#servicios" class="btn btn--primary">Ver Servicios</a>
+          <a href="#proyectos" class="btn btn--ghost">Nuestros Proyectos</a>
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
 
   <!-- Modular JS (defer = non-blocking) -->
   <script src="js/navbar.js" defer></script>

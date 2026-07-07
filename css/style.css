@@ -1,14 +1,15 @@
 /* ==========================================================================
-   ZARREL — Core styles (Phase 1: Hero only)
+   ZARREL — Core styles (Phase 1: floating card hero)
    Import order matters: variables first, then this file, then animations
    and responsive (see index.html <head>).
    Structure:
      1. Reset & base
-     2. Layout / stage (video + overlay + fallback)
-     3. Navbar (liquid glass, top-center)
-     4. Hero content (headline, subtitle, actions)
-     5. Buttons
-     6. Utilities
+     2. Page shell (white surface, centered column)
+     3. Navbar (light glass, centered above card)
+     4. Hero card (rounded, clips video + fallback + overlay)
+     5. Hero content (headline, subtitle, actions)
+     6. Buttons
+     7. Utilities
    ========================================================================== */
 
 /* 1. Reset & base --------------------------------------------------------- */
@@ -28,8 +29,8 @@ html {
 body {
   font-family: var(--font-sans);
   font-weight: var(--fw-regular);
-  color: var(--color-ink);
-  background-color: var(--bg-deep);
+  color: var(--color-ink-dark);
+  background-color: var(--page-bg);
   line-height: var(--lh-relaxed);
   min-height: 100vh;
   overflow-x: hidden;          /* never allow horizontal scroll */
@@ -50,34 +51,143 @@ video {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-primary-soft);
+  outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
-/* 2. Layout / stage ------------------------------------------------------- */
-/* Hero stacking order (z-index scale, see variables.css):
-     .hero__fallback / .hero__video  -> --z-video   (0)  lowest
-     .hero__overlay                  -> --z-overlay (1)  above video
-     .hero__content / .hero__scroll  -> --z-hero    (2)  above overlay
-     .navbar                         -> --z-navbar  (20) top of everything
-   `isolation: isolate` creates a local stacking context so these values
-   never collide with anything added later on the page. */
+/* 2. Page shell ----------------------------------------------------------- */
+/* Centered content column with generous white space. The hero card and the
+   navbar both live inside this max-width column. */
+.page {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--page-gutter) var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+/* 3. Navbar — light glass, centered above the card ------------------------ */
+.navbar {
+  position: sticky;
+  top: var(--space-lg);
+  z-index: var(--z-navbar);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(var(--blur-idle)) saturate(150%);
+  backdrop-filter: blur(var(--blur-idle)) saturate(150%);
+  box-shadow: var(--shadow-nav);
+  transition:
+    background var(--dur-med) var(--ease-out),
+    backdrop-filter var(--dur-med) var(--ease-out),
+    -webkit-backdrop-filter var(--dur-med) var(--ease-out),
+    border-color var(--dur-med) var(--ease-out),
+    box-shadow var(--dur-med) var(--ease-out),
+    padding var(--dur-med) var(--ease-out);
+}
+
+/* Scrolled state: more opacity + blur, toggled by js/navbar.js */
+.navbar.is-scrolled {
+  background: var(--glass-bg-scrolled);
+  border-color: var(--glass-border-strong);
+  -webkit-backdrop-filter: blur(var(--blur-scrolled)) saturate(160%);
+  backdrop-filter: blur(var(--blur-scrolled)) saturate(160%);
+  box-shadow: var(--shadow-nav-strong);
+}
+
+/* Subtle top glass reflection */
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 45%
+  );
+  pointer-events: none;
+}
+
+.navbar__logo {
+  font-size: var(--fs-logo);
+  font-weight: var(--fw-extrabold);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-ink-dark);
+  text-transform: uppercase;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2.25rem);
+  list-style: none;
+}
+
+.navbar__link {
+  position: relative;
+  font-size: var(--fs-nav);
+  font-weight: var(--fw-medium);
+  color: var(--color-ink-dark-muted);
+  letter-spacing: 0.01em;
+  padding: 0.25rem 0.1rem;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+/* animated underline on hover */
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 1.5px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-med) var(--ease-out);
+}
+
+.navbar__link:hover,
+.navbar__link:focus-visible {
+  color: var(--color-ink-dark);
+}
+
+.navbar__link:hover::after,
+.navbar__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* 4. Hero card ------------------------------------------------------------ */
+/* Rounded floating card. overflow:hidden + isolate clip the video, fallback
+   and overlay to the rounded corners. Card stacking (see variables.css):
+     .hero__fallback / .hero__video  -> --z-video   (0)
+     .hero__overlay                  -> --z-overlay (1)
+     .hero__content                  -> --z-hero    (2) */
 .hero {
   position: relative;
   width: 100%;
-  /* Fixed viewport height prevents layout shift as the video loads. */
-  min-height: 100vh;
-  min-height: 100svh;          /* mobile-safe viewport unit */
+  height: var(--card-height);
   display: flex;
   align-items: center;
-  justify-content: center;
+  border-radius: var(--radius-card);
   overflow: hidden;
   isolation: isolate;
+  box-shadow: var(--shadow-card);
+  background: var(--bg-deep);   /* base color while media loads */
 }
 
 /* Fallback background: premium gradient shown before / without hero.mp4.
-   Always painted underneath the video so the page never looks broken.
+   Always painted underneath the video so the card never looks broken.
    On video error main.js adds .hero.is-video-error, layering in a static
    image for a richer fallback than the gradient alone. */
 .hero__fallback {
@@ -120,7 +230,7 @@ video {
   display: none;
 }
 
-/* 3. Overlay above video -------------------------------------------------- */
+/* Overlay above video — subtle blue + soft dark wash for legibility only. */
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -130,126 +240,23 @@ video {
 }
 
 .hero__overlay::after {
-  /* very light dark wash for text legibility, video still visible */
   content: "";
   position: absolute;
   inset: 0;
   background: var(--overlay-dark);
 }
 
-/* 3. Navbar — liquid glass, top center ------------------------------------ */
-.navbar {
-  position: fixed;
-  top: var(--navbar-top);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: var(--z-navbar);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.85rem 2rem;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  -webkit-backdrop-filter: blur(var(--blur-idle)) saturate(140%);
-  backdrop-filter: blur(var(--blur-idle)) saturate(140%);
-  box-shadow: var(--shadow-glass);
-  transition:
-    background var(--dur-med) var(--ease-out),
-    backdrop-filter var(--dur-med) var(--ease-out),
-    -webkit-backdrop-filter var(--dur-med) var(--ease-out),
-    border-color var(--dur-med) var(--ease-out),
-    box-shadow var(--dur-med) var(--ease-out),
-    padding var(--dur-med) var(--ease-out);
-}
-
-/* Scrolled state: more blur + opacity, toggled by js/navbar.js */
-.navbar.is-scrolled {
-  background: var(--glass-bg-scrolled);
-  border-color: var(--glass-border-strong);
-  -webkit-backdrop-filter: blur(var(--blur-scrolled)) saturate(160%);
-  backdrop-filter: blur(var(--blur-scrolled)) saturate(160%);
-  box-shadow: var(--shadow-glass-strong);
-  padding-top: 0.7rem;
-  padding-bottom: 0.7rem;
-}
-
-/* Subtle top glass reflection */
-.navbar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.14) 0%,
-    rgba(255, 255, 255, 0) 40%
-  );
-  pointer-events: none;
-}
-
-.navbar__logo {
-  font-size: var(--fs-logo);
-  font-weight: var(--fw-extrabold);
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-secondary);
-  text-transform: uppercase;
-}
-
-.navbar__links {
-  display: flex;
-  align-items: center;
-  gap: clamp(1rem, 2.5vw, 2.25rem);
-  list-style: none;
-}
-
-.navbar__link {
-  position: relative;
-  font-size: var(--fs-nav);
-  font-weight: var(--fw-medium);
-  color: var(--color-ink-muted);
-  letter-spacing: 0.01em;
-  padding: 0.25rem 0.1rem;
-  transition: color var(--dur-fast) var(--ease-out);
-}
-
-/* animated underline on hover */
-.navbar__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 100%;
-  height: 1.5px;
-  background: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-med) var(--ease-out);
-}
-
-.navbar__link:hover,
-.navbar__link:focus-visible {
-  color: var(--color-secondary);
-}
-
-.navbar__link:hover::after,
-.navbar__link:focus-visible::after {
-  transform: scaleX(1);
-}
-
-/* 4. Hero content --------------------------------------------------------- */
+/* 5. Hero content — left-aligned, vertically centered inside the card ----- */
 .hero__content {
   position: relative;
   z-index: var(--z-hero);
   width: 100%;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-  text-align: center;
+  max-width: 42rem;
+  padding: clamp(2rem, 5vw, 4rem);
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-lg);
 }
 
@@ -258,15 +265,8 @@ video {
   font-weight: var(--fw-extrabold);
   line-height: var(--lh-tight);
   letter-spacing: var(--tracking-tight);
-  max-width: 16ch;
-  background: linear-gradient(
-    180deg,
-    var(--color-secondary) 0%,
-    #dfe7f5 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  max-width: 18ch;
+  color: var(--color-ink);
 }
 
 .hero__subtitle {
@@ -274,18 +274,17 @@ video {
   font-weight: var(--fw-regular);
   line-height: var(--lh-snug);
   color: var(--color-ink-muted);
-  max-width: 58ch;
+  max-width: 44ch;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: var(--space-md);
-  margin-top: var(--space-sm);
+  margin-top: var(--space-xs);
 }
 
-/* 5. Buttons -------------------------------------------------------------- */
+/* 6. Buttons -------------------------------------------------------------- */
 .btn {
   position: relative;
   display: inline-flex;
@@ -296,7 +295,7 @@ video {
   font-size: var(--fs-btn);
   font-weight: var(--fw-semibold);
   letter-spacing: 0.01em;
-  padding: 0.9rem 1.9rem;
+  padding: 0.85rem 1.75rem;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   cursor: pointer;
@@ -321,11 +320,11 @@ video {
   box-shadow: var(--shadow-btn-hover);
 }
 
-/* Secondary — glass outline */
+/* Secondary — glass outline over the video */
 .btn--ghost {
   color: var(--color-secondary);
-  background: var(--glass-bg);
-  border-color: var(--glass-border-strong);
+  background: var(--glass-dark-bg);
+  border-color: var(--glass-dark-border);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
@@ -333,9 +332,8 @@ video {
 .btn--ghost:hover,
 .btn--ghost:focus-visible {
   transform: translateY(-3px);
-  background: var(--glass-bg-scrolled);
+  background: var(--glass-dark-bg-strong);
   border-color: var(--color-primary-soft);
-  box-shadow: var(--shadow-glass);
 }
 
 /* Sheen sweep on hover (glass reflection) */
@@ -362,34 +360,7 @@ video {
   left: 130%;
 }
 
-/* Scroll cue at the bottom of the hero */
-.hero__scroll {
-  position: absolute;
-  bottom: 1.75rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: var(--z-hero);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.72rem;
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-ink-faint);
-}
-
-.hero__scroll-line {
-  width: 1px;
-  height: 46px;
-  background: linear-gradient(
-    180deg,
-    var(--color-primary-soft) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-}
-
-/* 6. Utilities ------------------------------------------------------------ */
+/* 7. Utilities ------------------------------------------------------------ */
 .visually-hidden {
   position: absolute;
   width: 1px;

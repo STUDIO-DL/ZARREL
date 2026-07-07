@@ -1,7 +1,9 @@
 /**
  * ZARREL — main.js
- * App bootstrap: hero video loading, graceful fallback, smooth anchor
- * scrolling, and performance helpers.
+ * App bootstrap: hero video loading inside the rounded card, graceful
+ * fallback (gradient / SVG clipped by the card), smooth anchor scrolling,
+ * and performance helpers. The video is enforced muted so autoplay is
+ * permitted, and swaps to the in-card fallback on any failure.
  */
 
 (function () {
