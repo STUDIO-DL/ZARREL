@@ -31,15 +31,28 @@
 /* --- Entrance orchestration --------------------------------------------
    Elements start hidden (.reveal). js/animations.js adds .is-visible when
    the page is ready, triggering a staggered fade-up. If JS is unavailable,
-   the no-js fallback at the end keeps everything visible. */
+   the no-js fallback at the end keeps everything visible.
+
+   will-change is applied ONLY while the entrance is pending/running, then
+   cleared by animations.js on animationend. Keeping it permanent (especially
+   on the video card) forces standing compositor layers that can make the
+   looping hero video stutter. */
 .reveal {
   opacity: 0;
+}
+
+.reveal:not(.is-animated) {
   will-change: opacity, transform;
 }
 
 .reveal.is-visible {
   animation: zr-fade-up var(--dur-slow) var(--ease-out) both;
   animation-delay: var(--reveal-delay, 0s);
+}
+
+/* Once the entrance finishes we drop the compositor hint. */
+.reveal.is-animated {
+  will-change: auto;
 }
 
 /* Navbar + hero card fade in gently (no vertical shift for the sticky nav) */

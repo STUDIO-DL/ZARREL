@@ -6,10 +6,9 @@
      1. Reset & base
      2. Page shell (white surface, centered column)
      3. Navbar (light glass, centered above card)
-     4. Hero card (rounded, clips video + fallback + overlay)
-     5. Hero content (headline, subtitle, actions)
-     6. Buttons
-     7. Utilities
+     4. Hero (video-only card, rounded, clips video + fallback)
+     5. Hero content (headline + subtitle, dark ink below the card)
+     6. Utilities
    ========================================================================== */
 
 /* 1. Reset & base --------------------------------------------------------- */
@@ -167,21 +166,30 @@ video {
   transform: scaleX(1);
 }
 
-/* 4. Hero card ------------------------------------------------------------ */
-/* Rounded floating card. overflow:hidden + isolate clip the video, fallback
-   and overlay to the rounded corners. Card stacking (see variables.css):
-     .hero__fallback / .hero__video  -> --z-video   (0)
-     .hero__overlay                  -> --z-overlay (1)
-     .hero__content                  -> --z-hero    (2) */
+/* 4. Hero ----------------------------------------------------------------- */
+/* Vertical stack: the video card on top, the text block below. The wrapper
+   just spaces the two; all the visual weight lives in .hero__card. */
 .hero {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(1.75rem, 4vw, 3rem);   /* breathing room between card and text */
+}
+
+/* Rounded floating card — now holds ONLY the video + fallback.
+   overflow:hidden + isolate clip the video and fallback to the rounded
+   corners. `contain: paint` keeps the card its own paint layer so the looping
+   video repaints don't ripple into the rest of the page. Card stacking:
+     .hero__fallback / .hero__video  -> --z-video (0) */
+.hero__card {
   position: relative;
   width: 100%;
   height: var(--card-height);
-  display: flex;
-  align-items: center;
   border-radius: var(--radius-card);
   overflow: hidden;
   isolation: isolate;
+  contain: paint;
   box-shadow: var(--shadow-card);
   background: var(--bg-deep);   /* base color while media loads */
 }
@@ -217,8 +225,13 @@ video {
   /* Fade the video in once it can play (toggled from main.js). */
   opacity: 0;
   transition: opacity var(--dur-slow) var(--ease-out);
-  pointer-events: none;
+  pointer-events: none;      /* no interaction jank on the looping video */
   background: transparent;
+  /* Promote the video to its own GPU layer for smooth, stutter-free playback.
+     No CSS filters/animations run on this element during playback. */
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .hero__video.is-ready {
@@ -230,34 +243,16 @@ video {
   display: none;
 }
 
-/* Overlay above video — subtle blue + soft dark wash for legibility only. */
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  z-index: var(--z-overlay);
-  background: var(--overlay-blue);
-  pointer-events: none;
-}
-
-.hero__overlay::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--overlay-dark);
-}
-
-/* 5. Hero content — left-aligned, vertically centered inside the card ----- */
+/* 5. Hero content — dark ink on the white page, below the card ------------ */
 .hero__content {
-  position: relative;
-  z-index: var(--z-hero);
   width: 100%;
-  max-width: 42rem;
-  padding: clamp(2rem, 5vw, 4rem);
+  max-width: 52rem;
+  padding: 0 clamp(0.25rem, 2vw, 1.5rem);
   text-align: left;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .hero__headline {
@@ -265,102 +260,19 @@ video {
   font-weight: var(--fw-extrabold);
   line-height: var(--lh-tight);
   letter-spacing: var(--tracking-tight);
-  max-width: 18ch;
-  color: var(--color-ink);
+  max-width: 20ch;
+  color: var(--color-ink-dark);
 }
 
 .hero__subtitle {
   font-size: var(--fs-subtitle);
   font-weight: var(--fw-regular);
   line-height: var(--lh-snug);
-  color: var(--color-ink-muted);
-  max-width: 44ch;
+  color: var(--color-ink-dark-muted);
+  max-width: 52ch;
 }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  margin-top: var(--space-xs);
-}
-
-/* 6. Buttons -------------------------------------------------------------- */
-.btn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-family: inherit;
-  font-size: var(--fs-btn);
-  font-weight: var(--fw-semibold);
-  letter-spacing: 0.01em;
-  padding: 0.85rem 1.75rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  cursor: pointer;
-  overflow: hidden;
-  transition:
-    transform var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-med) var(--ease-out),
-    background var(--dur-med) var(--ease-out),
-    border-color var(--dur-med) var(--ease-out);
-}
-
-/* Primary — electric blue */
-.btn--primary {
-  color: var(--color-secondary);
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-strong) 100%);
-  box-shadow: var(--shadow-btn);
-}
-
-.btn--primary:hover,
-.btn--primary:focus-visible {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-btn-hover);
-}
-
-/* Secondary — glass outline over the video */
-.btn--ghost {
-  color: var(--color-secondary);
-  background: var(--glass-dark-bg);
-  border-color: var(--glass-dark-border);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-
-.btn--ghost:hover,
-.btn--ghost:focus-visible {
-  transform: translateY(-3px);
-  background: var(--glass-dark-bg-strong);
-  border-color: var(--color-primary-soft);
-}
-
-/* Sheen sweep on hover (glass reflection) */
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -120%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    100deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: skewX(-18deg);
-  transition: left var(--dur-slow) var(--ease-out);
-  pointer-events: none;
-}
-
-.btn:hover::before,
-.btn:focus-visible::before {
-  left: 130%;
-}
-
-/* 7. Utilities ------------------------------------------------------------ */
+/* 6. Utilities ------------------------------------------------------------ */
 .visually-hidden {
   position: absolute;
   width: 1px;

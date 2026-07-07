@@ -29,7 +29,8 @@
     ZARREL — Phase 1: Floating card hero (AKQA-inspired layout)
     ============================================================
     Composition: white page, centered nav above a rounded video
-    card. The card clips the hero video via overflow:hidden.
+    card that holds ONLY the video. The headline + subtitle sit
+    BELOW the card as dark ink on the white page.
     Video asset lives at /assets/videos/hero.mp4.
   -->
 
@@ -48,38 +49,42 @@
       </nav>
     </header>
 
-    <!-- Hero — rounded floating card that clips the video -->
-    <main class="hero reveal" id="hero" style="--reveal-delay: 0.1s">
+    <!-- Hero — video card on top, text block below -->
+    <main class="hero" id="hero">
 
-      <!-- Fallback layer (CSS gradient + static image). Painted beneath the
-           video; main.js reveals the image on video error/missing file. -->
-      <div class="hero__fallback" aria-hidden="true"></div>
+      <!-- Rounded floating card that clips the video (video only, no text) -->
+      <div class="hero__card reveal" style="--reveal-delay: 0.1s">
 
-      <!--
-        Background video — decorative, autoplay + muted + loop + playsinline.
-        preload="metadata" keeps first paint fast. object-fit:cover + the
-        card's overflow:hidden keep it clipped to the rounded corners.
-      -->
-      <video
-        class="hero__video"
-        id="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        width="1920"
-        height="1080"
-        poster="assets/images/hero-fallback.svg"
-        aria-hidden="true"
-      >
-        <source src="assets/videos/hero.mp4" type="video/mp4">
-      </video>
+        <!-- Fallback layer (CSS gradient + static image). Painted beneath the
+             video; main.js reveals the image on video error/missing file. -->
+        <div class="hero__fallback" aria-hidden="true"></div>
 
-      <!-- Readability overlay -->
-      <div class="hero__overlay" aria-hidden="true"></div>
+        <!--
+          Background video — decorative, autoplay + muted + loop + playsinline.
+          preload="auto" so the above-the-fold hero buffers ahead for smooth,
+          stutter-free playback. object-fit:cover + the card's overflow:hidden
+          keep it clipped to the rounded corners.
+        -->
+        <video
+          class="hero__video"
+          id="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+          width="1920"
+          height="1080"
+          poster="assets/images/hero-fallback.svg"
+          aria-hidden="true"
+        >
+          <source src="assets/videos/hero.mp4" type="video/mp4">
+        </video>
 
-      <!-- Hero content — left-aligned, vertically centered inside card -->
+      </div>
+
+      <!-- Hero content — dark ink on the white page, below the card -->
       <section class="hero__content" aria-labelledby="hero-heading">
 
         <h1 class="hero__headline reveal" id="hero-heading"
@@ -91,11 +96,6 @@
           Creamos páginas web, aplicaciones móviles, identidad visual y soluciones
           tecnológicas para empresas modernas.
         </p>
-
-        <div class="hero__actions reveal" style="--reveal-delay: 0.55s">
-          <a href="#servicios" class="btn btn--primary">Ver Servicios</a>
-          <a href="#proyectos" class="btn btn--ghost">Nuestros Proyectos</a>
-        </div>
 
       </section>
 
