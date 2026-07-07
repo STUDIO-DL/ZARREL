@@ -83,6 +83,28 @@
     if (attempt && typeof attempt.then === 'function') {
       attempt.then(showVideo).catch(showFallback);
     }
+
+    // Keep the decorative loop alive — browsers may pause on tab blur,
+    // low-power mode, or buffer stalls. Only retry while playback is expected.
+    const shouldPlay = () =>
+      !hero?.classList.contains('is-video-error') && !document.hidden;
+
+    const resumeIfNeeded = () => {
+      if (!shouldPlay() || !video.paused) return;
+      const retry = video.play();
+      if (retry && typeof retry.catch === 'function') {
+        retry.catch(() => { /* autoplay policy; fallback already handled */ });
+      }
+    };
+
+    document.addEventListener('visibilitychange', resumeIfNeeded);
+    video.addEventListener('pause', resumeIfNeeded);
+    video.addEventListener('stalled', resumeIfNeeded);
+    video.addEventListener('waiting', resumeIfNeeded);
+    video.addEventListener('ended', () => {
+      video.currentTime = 0;
+      resumeIfNeeded();
+    });
   }
 
   /* ------------------------------------------------------------------ */
