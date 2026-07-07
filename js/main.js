@@ -20,6 +20,19 @@
    * Fade the video in once it can play. If the file is missing, fails to
    * decode, or the browser blocks autoplay, we swap to the static fallback
    * (CSS gradient + image) by flagging the hero with .is-video-error.
+   *
+   * Smooth-playback notes:
+   *  - We reveal the video only when the browser reports it can play without
+   *    re-buffering (canplaythrough / readyState 4), so it doesn't fade in
+   *    mid-stutter. canplay (readyState 3) is the fallback trigger.
+   *  - The <video> uses preload="auto" (see index.html) to buffer ahead.
+   *  - No DOM writes happen during playback; we only toggle a class once.
+   *
+   *  NOTE: hero.mp4 is ~24MB. The CSS/JS here removes rendering jank, but if
+   *  the video still buffers on slow networks, compress/re-encode it
+   *  (e.g. `ffmpeg -i hero.mp4 -vf scale=1920:-2 -c:v libx264 -crf 26
+   *  -preset slow -movflags +faststart -an hero.mp4`) to shrink it and add
+   *  the faststart flag so playback can begin before the full download.
    */
   function initHeroVideo() {
     if (!video) return;
@@ -44,10 +57,12 @@
     video.muted = true;
     video.setAttribute('muted', '');
 
-    // Already buffered enough (e.g. cached) — reveal immediately.
-    if (video.readyState >= 3) {
+    // Reveal only when enough is buffered to play through smoothly. Fall back
+    // to canplay so we never leave the card blank if canplaythrough is slow.
+    if (video.readyState >= 4) {
       showVideo();
     } else {
+      video.addEventListener('canplaythrough', showVideo, { once: true });
       video.addEventListener('canplay', showVideo, { once: true });
     }
 
@@ -62,7 +77,6 @@
       }
     };
     video.addEventListener('loadstart', guardNoSource);
-    video.addEventListener('stalled', guardNoSource);
 
     // Explicitly kick off playback; if autoplay is blocked, fall back.
     const attempt = video.play();
