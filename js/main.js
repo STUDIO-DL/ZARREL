@@ -1,81 +1,113 @@
-// ============================================
-// ZARREL — main.js
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
+/**
+ * ZARREL — main.js
+ * App bootstrap: hero video loading, graceful fallback, smooth anchor
+ * scrolling, and performance helpers.
+ */
 
-  // Dynamic footer year
-  document.querySelectorAll('#footer-year').forEach(el => {
-    el.textContent = new Date().getFullYear();
-  });
+(function () {
+  'use strict';
 
-  // Render Lucide icons
-  if (window.lucide) lucide.createIcons();
+  const video = document.getElementById('hero-video');
+  const hero = document.getElementById('hero');
 
-  // Navbar background on scroll
-  const navbar = document.querySelector('.navbar');
-  if (navbar) {
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    });
-  }
+  /* ------------------------------------------------------------------ */
+  /*  Hero video — non-blocking load with graceful fallback              */
+  /* ------------------------------------------------------------------ */
 
-  // Mobile menu toggle
-  const navToggle = document.querySelector('.nav-toggle');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  if (navToggle && mobileMenu) {
-    navToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.remove('open'));
-    });
-  }
+  /**
+   * Fade the video in once it can play. If the file is missing, fails to
+   * decode, or the browser blocks autoplay, we swap to the static fallback
+   * (CSS gradient + image) by flagging the hero with .is-video-error.
+   */
+  function initHeroVideo() {
+    if (!video) return;
 
-  // Reveal-on-scroll animation
-  const revealEls = document.querySelectorAll('.reveal');
-  if (revealEls.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => observer.observe(el));
-  }
+    let settled = false;
 
-  // Filter tabs (used on servicios.html and proyectos.html)
-  const filterTabs = document.querySelectorAll('.filter-tab');
-  const filterableCards = document.querySelectorAll('.filterable-card');
-  if (filterTabs.length && filterableCards.length) {
-    filterTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        filterTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const filter = tab.dataset.filter;
-        filterableCards.forEach(card => {
-          const show = filter === 'todos' || card.dataset.category === filter;
-          card.classList.toggle('hidden', !show);
-        });
-      });
-    });
-  }
+    const showVideo = () => {
+      if (settled) return;
+      settled = true;
+      video.classList.add('is-ready');
+    };
 
-  // Contact form (contacto.html)
-  // NOTE: this form posts to Formspree. Replace YOUR_FORM_ID in contacto.html
-  // with your real endpoint from https://formspree.io — no JS changes needed
-  // for the submission itself, this just adds a friendlier pending state.
-  const contactForm = document.querySelector('#contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', () => {
-      const btn = contactForm.querySelector('button[type="submit"]');
-      if (btn) {
-        btn.disabled = true;
-        btn.dataset.originalText = btn.innerHTML;
-        btn.innerHTML = 'Enviando...';
+    const showFallback = () => {
+      if (settled) return;
+      settled = true;
+      video.classList.remove('is-ready');
+      video.removeAttribute('autoplay');
+      if (hero) hero.classList.add('is-video-error');
+    };
+
+    // Guarantee muted so autoplay is permitted on every browser/policy.
+    video.muted = true;
+    video.setAttribute('muted', '');
+
+    // Already buffered enough (e.g. cached) — reveal immediately.
+    if (video.readyState >= 3) {
+      showVideo();
+    } else {
+      video.addEventListener('canplay', showVideo, { once: true });
+    }
+
+    // Missing file, decode failure, or unsupported codec -> fallback.
+    video.addEventListener('error', showFallback, { once: true });
+
+    // Some browsers report a dead <source> only via the media element's
+    // NETWORK_NO_SOURCE state rather than firing "error" on the <video>.
+    const guardNoSource = () => {
+      if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+        showFallback();
       }
+    };
+    video.addEventListener('loadstart', guardNoSource);
+    video.addEventListener('stalled', guardNoSource);
+
+    // Explicitly kick off playback; if autoplay is blocked, fall back.
+    const attempt = video.play();
+    if (attempt && typeof attempt.then === 'function') {
+      attempt.then(showVideo).catch(showFallback);
+    }
+  }
+
+  /* ------------------------------------------------------------------ */
+  /*  Smooth in-page anchor scrolling                                   */
+  /* ------------------------------------------------------------------ */
+
+  /**
+   * Intercept hash links for a polished scroll (respects reduced motion).
+   */
+  function initSmoothAnchors() {
+    const prefersReduced =
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced) return;
+
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const id = anchor.getAttribute('href');
+        if (!id || id === '#') return;
+
+        const target = document.querySelector(id);
+        if (!target) return;
+
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     });
   }
 
-});
+  /* ------------------------------------------------------------------ */
+  /*  Bootstrap                                                         */
+  /* ------------------------------------------------------------------ */
+
+  function init() {
+    initHeroVideo();
+    initSmoothAnchors();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

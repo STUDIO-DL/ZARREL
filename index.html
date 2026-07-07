@@ -1,204 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zarrel — Agencia Digital</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZARREL — Diseñamos y desarrollamos experiencias digitales que impulsan el futuro. Páginas web, apps móviles, identidad visual y soluciones tecnológicas.">
+  <meta name="theme-color" content="#05070d">
+
+  <title>ZARREL — Experiencias Digitales</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts: Manrope (primary) with Inter fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Modular CSS (order matters) -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="container">
-    <a href="index.html" class="logo">
-      <div class="logo-mark">Z</div>
-      <span class="logo-text">ZARREL</span>
-    </a>
-    <nav class="nav-links">
-      <a href="index.html" class="active">Inicio</a>
-      <a href="nosotros.html">Nosotros</a>
-      <a href="proyectos.html">Proyectos</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-    <div class="nav-right">
-      <a href="contacto.html" class="btn btn-primary">
-        Hablemos <i data-lucide="arrow-right"></i>
-      </a>
-      <button class="nav-toggle" aria-label="Abrir menú">
-        <i data-lucide="menu"></i>
-      </button>
-    </div>
-  </div>
-</header>
+  <!--
+    ============================================================
+    ZARREL — Phase 1: Hero-only landing page
+    ============================================================
 
-<div class="mobile-menu">
-  <a href="index.html" class="active">Inicio</a>
-  <a href="nosotros.html">Nosotros</a>
-  <a href="proyectos.html">Proyectos</a>
-  <a href="servicios.html">Servicios</a>
-  <a href="contacto.html">Contacto</a>
-</div>
+    VIDEO ASSET REQUIRED:
+    Drop your cinematic hero video at:
+      /assets/videos/hero.mp4
+    Recommended: H.264, 1920×1080+, muted loop, ≤15 MB.
+    Until the file is present the page uses a CSS gradient fallback
+  -->
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero-copy">
-      <span class="eyebrow on-dark">Agencia Digital</span>
-      <h1>Diseñamos y desarrollamos soluciones digitales que <span class="accent">impulsan tu negocio.</span></h1>
-      <p class="lead">En Zarrel ayudamos a empresas y marcas a transformar sus ideas en experiencias digitales modernas, funcionales y centradas en las personas.</p>
-      <div class="hero-actions">
-        <a href="proyectos.html" class="btn btn-primary">Conoce nuestros proyectos <i data-lucide="arrow-right"></i></a>
-        <a href="servicios.html" class="btn-text">Ver servicios <i data-lucide="arrow-down"></i></a>
+  <main class="hero" id="hero">
+
+    <!-- Fallback layer (CSS gradient + static image). Always painted beneath
+         the video; main.js reveals the image on video error/missing file. -->
+    <div class="hero__fallback" aria-hidden="true"></div>
+
+    <!--
+      Background video — decorative, autoplay + muted + loop + playsinline.
+      preload="metadata" keeps first paint fast (fetch just enough to start).
+      poster shows a lightweight gradient still before the first frame paints.
+      Intrinsic width/height reserve the aspect box to avoid layout shift.
+    -->
+    <video
+      class="hero__video"
+      id="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      width="1920"
+      height="1080"
+      poster="assets/images/hero-fallback.svg"
+      aria-hidden="true"
+    >
+      <source src="assets/videos/hero.mp4" type="video/mp4">
+    </video>
+
+    <!-- Readability overlay -->
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <!-- Navigation — top center, liquid glass -->
+    <header class="navbar reveal" id="navbar" role="banner">
+      <a href="/" class="navbar__logo" aria-label="ZARREL — Inicio">ZARREL</a>
+      <nav aria-label="Navegación principal">
+        <ul class="navbar__links">
+          <li><a href="#servicios" class="navbar__link">Servicios</a></li>
+          <li><a href="#expertise" class="navbar__link">Expertise</a></li>
+          <li><a href="#blog" class="navbar__link">Blog</a></li>
+          <li><a href="#contacto" class="navbar__link">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero content -->
+    <section class="hero__content" aria-labelledby="hero-heading">
+
+      <h1 class="hero__headline reveal" id="hero-heading"
+          style="--reveal-delay: 0.15s">
+        Diseñamos y desarrollamos experiencias digitales que impulsan el futuro.
+      </h1>
+
+      <p class="hero__subtitle reveal" style="--reveal-delay: 0.3s">
+        Creamos páginas web, aplicaciones móviles, identidad visual y soluciones
+        tecnológicas para empresas modernas.
+      </p>
+
+      <div class="hero__actions reveal float-soft" style="--reveal-delay: 0.45s">
+        <a href="#servicios" class="btn btn--primary">Ver Servicios</a>
+        <a href="#proyectos" class="btn btn--ghost">Nuestros Proyectos</a>
       </div>
+
+    </section>
+
+    <!-- Scroll cue (decorative) -->
+    <div class="hero__scroll reveal" aria-hidden="true" style="--reveal-delay: 0.7s">
+      <span>Scroll</span>
+      <span class="hero__scroll-line"></span>
     </div>
 
-    <div class="hero-visual">
-      <img src="assets/hero-laptop.png" alt="Mockup de laptop Zarrel" class="laptop-img" loading="eager" decoding="async">
-      <img src="assets/hero-phone.png" alt="Mockup de móvil Zarrel" class="phone-img" loading="eager" decoding="async">
-      <div class="float-badge b1"><i data-lucide="user"></i></div>
-      <div class="float-badge b2"><i data-lucide="bar-chart-3"></i></div>
-      <div class="float-badge b3"><i data-lucide="code-2"></i></div>
-      <div class="float-badge b4"><i data-lucide="pie-chart"></i></div>
-    </div>
-  </div>
-</section>
+  </main>
 
-<!-- ABOUT -->
-<section class="about reveal">
-  <div class="container">
-    <div>
-      <span class="eyebrow">Sobre nosotros</span>
-      <h2>Tecnología, diseño y estrategia para crecer juntos</h2>
-      <p>Somos un equipo multidisciplinario apasionado por la tecnología, el diseño y la innovación. Nos enfocamos en entender las necesidades de cada cliente para crear soluciones a medida que generen resultados reales.</p>
-      <div class="about-points">
-        <div class="about-point">
-          <div class="icon-circle"><i data-lucide="users"></i></div>
-          <span>Equipo multidisciplinario</span>
-        </div>
-        <div class="about-point">
-          <div class="icon-circle"><i data-lucide="sparkles"></i></div>
-          <span>Soluciones personalizadas</span>
-        </div>
-        <div class="about-point">
-          <div class="icon-circle"><i data-lucide="trending-up"></i></div>
-          <span>Resultados que generan impacto</span>
-        </div>
-      </div>
-    </div>
-    <div class="about-visual">
-      <div class="float-badge v1"><i data-lucide="globe"></i></div>
-      <div class="float-badge v2"><i data-lucide="layout-dashboard"></i></div>
-      <div class="float-badge v3"><i data-lucide="pie-chart"></i></div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats reveal">
-  <div class="container">
-    <div class="stat-card"><div class="icon-circle"><i data-lucide="box"></i></div><div><strong>25+</strong><span>Proyectos completados</span></div></div>
-    <div class="stat-card"><div class="icon-circle"><i data-lucide="users"></i></div><div><strong>10+</strong><span>Clientes satisfechos</span></div></div>
-    <div class="stat-card"><div class="icon-circle"><i data-lucide="calendar"></i></div><div><strong>5</strong><span>Años de experiencia</span></div></div>
-    <div class="stat-card"><div class="icon-circle"><i data-lucide="shield-check"></i></div><div><strong>100%</strong><span>Comprometidos contigo</span></div></div>
-  </div>
-</section>
-
-<!-- FEATURED PROJECTS -->
-<section class="projects reveal">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <span class="eyebrow">Proyectos destacados</span>
-        <h2>Algunos de nuestros trabajos</h2>
-      </div>
-      <a href="proyectos.html" class="btn-text">Ver todos los proyectos <i data-lucide="arrow-right"></i></a>
-    </div>
-    <div class="projects-grid">
-      <a href="proyectos.html" class="project-card">
-        <div class="project-thumb"><div class="fake-ui"><div class="bar w60"></div><div class="bar w40"></div><div class="bar w80"></div><div class="chip"></div></div></div>
-        <div class="project-body"><h3>Plataforma de gestión</h3><span class="cat">Desarrollo Web</span></div>
-      </a>
-      <a href="proyectos.html" class="project-card">
-        <div class="project-thumb"><div class="fake-ui"><div class="bar w80"></div><div class="bar w60"></div><div class="bar w40"></div><div class="chip"></div></div></div>
-        <div class="project-body"><h3>Tienda en línea</h3><span class="cat">E-commerce</span></div>
-      </a>
-      <a href="proyectos.html" class="project-card">
-        <div class="project-thumb"><div class="fake-ui"><div class="bar w40"></div><div class="bar w80"></div><div class="bar w60"></div><div class="chip"></div></div></div>
-        <div class="project-body"><h3>Aplicación móvil</h3><span class="cat">Desarrollo de Apps</span></div>
-      </a>
-      <a href="proyectos.html" class="project-card">
-        <div class="project-thumb"><div class="fake-ui"><div class="bar w60"></div><div class="bar w80"></div><div class="bar w40"></div><div class="chip"></div></div></div>
-        <div class="project-body"><h3>Identidad visual</h3><span class="cat">Diseño gráfico</span></div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="services reveal">
-  <div class="container">
-    <span class="eyebrow">Servicios</span>
-    <h2 style="font-size:clamp(1.7rem,3vw,2.3rem); font-weight:700; margin-bottom:44px;">¿Qué podemos hacer por ti?</h2>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="icon-circle"><i data-lucide="code-2"></i></div>
-        <h3>Desarrollo Web</h3>
-        <p>Sitios web modernos, rápidos y escalables a la medida de tu negocio.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon-circle"><i data-lucide="smartphone"></i></div>
-        <h3>Aplicaciones Móviles</h3>
-        <p>Apps iOS y Android enfocadas en la mejor experiencia de usuario.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon-circle"><i data-lucide="pen-tool"></i></div>
-        <h3>Diseño Gráfico</h3>
-        <p>Identidades visuales que comunican y conectan con tu marca.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon-circle"><i data-lucide="shopping-cart"></i></div>
-        <h3>E-commerce</h3>
-        <p>Tiendas en línea seguras, intuitivas y optimizadas.</p>
-      </div>
-      <div class="service-card">
-        <div class="icon-circle"><i data-lucide="line-chart"></i></div>
-        <h3>Marketing Digital</h3>
-        <p>Estrategias digitales para aumentar tu visibilidad y tus resultados.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER CTA -->
-<section class="footer-cta">
-  <div class="container">
-    <div class="cta-left">
-      <div class="logo-mark">Z</div>
-      <div class="cta-text"><strong>¿Tienes un proyecto en mente?</strong><span>Hablemos y hagámoslo realidad.</span></div>
-    </div>
-    <a href="contacto.html" class="btn btn-primary">Contáctanos <i data-lucide="arrow-right"></i></a>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container">
-    <div class="footer-bottom">
-      <p>© <span id="footer-year"></span> ZARREL. Todos los derechos reservados.</p>
-      <div class="social-row">
-        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-        <a href="#" aria-label="WhatsApp"><i data-lucide="phone"></i></a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script src="js/main.js"></script>
+  <!-- Modular JS (defer = non-blocking) -->
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

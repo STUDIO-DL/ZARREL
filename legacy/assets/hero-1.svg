@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <defs>
+    <linearGradient id="bgg" x1="0" x2="1">
+      <stop offset="0" stop-color="#03102a" />
+      <stop offset="1" stop-color="#041836" />
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0" x2="1">
+      <stop offset="0" stop-color="#06183a" />
+      <stop offset="1" stop-color="#02102a" />
+    </linearGradient>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="20" stdDeviation="30" flood-color="#000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="url(#bgg)" />
+
+  <!-- subtle particle layer -->
+  <g opacity="0.06" fill="#0ea5ff">
+    <circle cx="980" cy="140" r="5" />
+    <circle cx="1040" cy="210" r="3" />
+    <circle cx="880" cy="260" r="4" />
+  </g>
+
+  <!-- Laptop mockup -->
+  <g transform="translate(120,90)" filter="url(#softShadow)">
+    <!-- base plate -->
+    <rect x="40" y="300" width="820" height="220" rx="20" fill="#0b1420" opacity="0.95" />
+    <!-- keyboard area highlight -->
+    <rect x="84" y="320" width="740" height="140" rx="12" fill="#0b1016" />
+    <g fill="#0b1730" opacity="0.95">
+      <rect x="70" y="20" width="760" height="440" rx="16" />
+    </g>
+    <!-- screen frame -->
+    <rect x="96" y="36" width="704" height="360" rx="12" fill="#020617" stroke="#0b3a8f" stroke-opacity="0.06" />
+    <!-- screen content gradient -->
+    <rect x="106" y="46" width="684" height="340" rx="8" fill="url(#screenGrad)" />
+
+    <!-- headline block on screen -->
+    <g transform="translate(140,110)" fill="#ffffff">
+      <text x="0" y="0" font-family="Poppins, sans-serif" font-size="34" font-weight="700">Diseñamos y desarrollamos</text>
+      <text x="0" y="44" font-family="Poppins, sans-serif" font-size="34" font-weight="700"><tspan fill="#60A5FA">soluciones digitales</tspan> que</text>
+      <text x="0" y="88" font-family="Poppins, sans-serif" font-size="34" font-weight="700">impulsan tu negocio.</text>
+      <rect x="0" y="118" width="220" height="40" rx="8" fill="#2063eb" />
+      <text x="20" y="145" font-family="Poppins, sans-serif" font-size="14" font-weight="700" fill="#fff">Conoce nuestros proyectos →</text>
+    </g>
+
+    <!-- decorative floating icons right of laptop -->
+    <g transform="translate(840,90)" opacity="0.9">
+      <rect x="0" y="0" width="96" height="96" rx="12" fill="#04263f" stroke="#12a0ff" stroke-opacity="0.12" />
+      <rect x="110" y="60" width="96" height="96" rx="12" fill="#04263f" stroke="#12a0ff" stroke-opacity="0.12" />
+    </g>
+  </g>
+
+</svg>

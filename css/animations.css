@@ -1,0 +1,110 @@
+/* ==========================================================================
+   ZARREL — Animations
+   Keyframes + entrance/idle motion classes. Kept separate from layout so
+   motion can be tuned (or disabled) independently. All motion is gated
+   behind prefers-reduced-motion at the bottom of this file.
+   ========================================================================== */
+
+/* --- Keyframes ----------------------------------------------------------- */
+@keyframes zr-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zr-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Gentle vertical float for ambient elements */
+@keyframes zr-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* Scroll cue pulse */
+@keyframes zr-scroll-pulse {
+  0% { transform: scaleY(0.4); transform-origin: top; opacity: 0.4; }
+  50% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0.4); transform-origin: bottom; opacity: 0.4; }
+}
+
+/* Slow drifting glow behind the hero for subtle life */
+@keyframes zr-glow-drift {
+  0%, 100% { opacity: 0.5; transform: translate3d(-2%, 0, 0) scale(1); }
+  50% { opacity: 0.85; transform: translate3d(2%, -2%, 0) scale(1.06); }
+}
+
+/* --- Entrance orchestration --------------------------------------------
+   Elements start hidden (.reveal). js/animations.js adds .is-visible when
+   the hero is ready, triggering a staggered fade-up. If JS is unavailable,
+   the no-js fallback at the end keeps everything visible. */
+.reveal {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  animation: zr-fade-up var(--dur-slow) var(--ease-out) both;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+/* Navbar drops in from the top */
+.navbar.reveal.is-visible {
+  animation: zr-fade-in var(--dur-slow) var(--ease-out) both;
+}
+
+/* --- Idle / ambient motion ---------------------------------------------- */
+.hero__fallback::after {
+  /* extra animated glow layer over the gradient fallback */
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(
+    40% 40% at 50% 30%,
+    rgba(10, 132, 255, 0.28) 0%,
+    rgba(10, 132, 255, 0) 70%
+  );
+  animation: zr-glow-drift 14s var(--ease-in-out) infinite;
+  pointer-events: none;
+}
+
+.hero__scroll-line {
+  animation: zr-scroll-pulse 2.4s var(--ease-in-out) infinite;
+}
+
+/* Soft float applied to the button row (very subtle) */
+.float-soft {
+  animation: zr-float 6s var(--ease-in-out) infinite;
+}
+
+/* --- No-JS fallback: keep content visible if scripts fail --------------- */
+@media (scripting: none) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* --- Reduced motion: honor user preference ------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

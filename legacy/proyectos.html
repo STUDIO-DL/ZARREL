@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyectos — Zarrel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">Z</div>
+      <span class="logo-text">ZARREL</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="proyectos.html" class="active">Proyectos</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-right">
+      <a href="contacto.html" class="btn btn-primary">Hablemos <i data-lucide="arrow-right"></i></a>
+      <button class="nav-toggle" aria-label="Abrir menú"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Inicio</a>
+  <a href="nosotros.html">Nosotros</a>
+  <a href="proyectos.html" class="active">Proyectos</a>
+  <a href="servicios.html">Servicios</a>
+  <a href="contacto.html">Contacto</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <p class="breadcrumb">Inicio / <span>Proyectos</span></p>
+    <h1>Proyectos que generan impacto</h1>
+    <p>Conoce algunos de los proyectos en los que hemos trabajado y los resultados que hemos logrado.</p>
+  </div>
+</section>
+
+<section class="projects reveal">
+  <div class="container">
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="todos">Todos</button>
+      <button class="filter-tab" data-filter="web">Web</button>
+      <button class="filter-tab" data-filter="apps">Apps</button>
+      <button class="filter-tab" data-filter="diseno">Diseño</button>
+      <button class="filter-tab" data-filter="marketing">Marketing</button>
+    </div>
+
+    <div class="projects-grid">
+      <a href="#" class="project-card filterable-card" data-category="web">
+        <div class="project-thumb"><div class="fake-ui"><div class="bar w60"></div><div class="bar w40"></div><div class="bar w80"></div><div class="chip"></div></div></div>
+        <div class="project-body"><h3>Plataforma de gestión</h3><span class="cat">Sistema administrativo con panel de analíticas en tiempo real.</span><span class="tag">Web</span></div>
+      </a>
+      <a href="#" class="project-card filterable-card" data-category="web">
+        <div class="project-thumb"><div class="fake-ui"><div class="bar w80"></div><div class="bar w60"></div><div class="bar w40"></div><div class="chip"></div></div></div>
+        <div class="project-body"><h3>Tienda en línea</h3><span class="cat">E-commerce moderno y seguro con pasarela de pagos.</span><span class="tag">Web</span></div>
+      </a>
+      <a href="#" class="project-card filterable-card" data-category="apps">
+        <div class="project-thumb"><div class="fake-ui"><div class="bar w40"></div><div class="bar w80"></div><div class="bar w60"></div><div class="chip"></div></div></div>
+        <div class="project-body"><h3>Aplicación móvil</h3><span class="cat">App de seguimiento y estadísticas para dispositivos móviles.</span><span class="tag">Apps</span></div>
+      </a>
+      <a href="#" class="project-card filterable-card" data-category="diseno">
+        <div class="project-thumb"><div class="fake-ui"><div class="bar w60"></div><div class="bar w80"></div><div class="bar w40"></div><div class="chip"></div></div></div>
+        <div class="project-body"><h3>Identidad visual</h3><span class="cat">Rediseño de marca y materiales gráficos para empresa.</span><span class="tag">Diseño</span></div>
+      </a>
+      <a href="#" class="project-card filterable-card" data-category="web">
+        <div class="project-thumb"><div class="fake-ui"><div class="bar w60"></div><div class="bar w40"></div><div class="bar w60"></div><div class="chip"></div></div></div>
+        <div class="project-body"><h3>Landing page</h3><span class="cat">Landing optimizada para conversión y leads.</span><span class="tag">Web</span></div>
+      </a>
+      <a href="#" class="project-card filterable-card" data-category="marketing">
+        <div class="project-thumb"><div class="fake-ui"><div class="bar w80"></div><div class="bar w40"></div><div class="bar w60"></div><div class="chip"></div></div></div>
+        <div class="project-body"><h3>Campaña digital</h3><span class="cat">Estrategia y campañas que aumentaron las ventas.</span><span class="tag">Marketing</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="footer-cta">
+  <div class="container">
+    <div class="cta-left">
+      <div class="logo-mark">Z</div>
+      <div class="cta-text"><strong>¿Tienes un proyecto en mente?</strong><span>Hablemos y hagámoslo realidad.</span></div>
+    </div>
+    <a href="contacto.html" class="btn btn-primary">Contáctanos <i data-lucide="arrow-right"></i></a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© <span id="footer-year"></span> ZARREL. Todos los derechos reservados.</p>
+      <div class="social-row">
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" aria-label="WhatsApp"><i data-lucide="phone"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
