@@ -53,9 +53,28 @@
       if (hero) hero.classList.add('is-video-error');
     };
 
-    // Guarantee muted so autoplay is permitted on every browser/policy.
+    // Guarantee autoplay-friendly attributes on every browser/policy.
     video.muted = true;
+    video.defaultMuted = true;
     video.setAttribute('muted', '');
+    video.loop = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+
+    const shouldPlay = () =>
+      !hero?.classList.contains('is-video-error') &&
+      !document.hidden &&
+      !video.error;
+
+    /** Resume playback without fighting native loop transitions. */
+    const ensurePlaying = () => {
+      if (!shouldPlay() || !video.paused) return;
+      const retry = video.play();
+      if (retry && typeof retry.catch === 'function') {
+        retry.catch(() => { /* transient autoplay / buffer hiccup */ });
+      }
+    };
 
     // Reveal only when enough is buffered to play through smoothly. Fall back
     // to canplay so we never leave the card blank if canplaythrough is slow.
@@ -78,33 +97,30 @@
     };
     video.addEventListener('loadstart', guardNoSource);
 
-    // Explicitly kick off playback; if autoplay is blocked, fall back.
-    const attempt = video.play();
-    if (attempt && typeof attempt.then === 'function') {
-      attempt.then(showVideo).catch(showFallback);
-    }
+    // Kick off playback; a rejected promise alone is not a fatal error.
+    ensurePlaying();
 
-    // Keep the decorative loop alive — browsers may pause on tab blur,
-    // low-power mode, or buffer stalls. Only retry while playback is expected.
-    const shouldPlay = () =>
-      !hero?.classList.contains('is-video-error') && !document.hidden;
-
-    const resumeIfNeeded = () => {
-      if (!shouldPlay() || !video.paused) return;
-      const retry = video.play();
-      if (retry && typeof retry.catch === 'function') {
-        retry.catch(() => { /* autoplay policy; fallback already handled */ });
-      }
-    };
-
-    document.addEventListener('visibilitychange', resumeIfNeeded);
-    video.addEventListener('pause', resumeIfNeeded);
-    video.addEventListener('stalled', resumeIfNeeded);
-    video.addEventListener('waiting', resumeIfNeeded);
-    video.addEventListener('ended', () => {
-      video.currentTime = 0;
-      resumeIfNeeded();
+    // Resume when the tab becomes visible again.
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) ensurePlaying();
     });
+
+    // After buffer stalls, nudge playback once data is available again.
+    video.addEventListener('waiting', () => {
+      video.addEventListener('canplay', ensurePlaying, { once: true });
+    });
+    video.addEventListener('stalled', () => {
+      video.addEventListener('canplay', ensurePlaying, { once: true });
+    });
+
+    // Lightweight watchdog — catches silent pauses without hooking `pause`
+    // (which can fight the native loop on Safari/Chrome).
+    const watchdog = window.setInterval(ensurePlaying, 2500);
+    window.addEventListener(
+      'pagehide',
+      () => window.clearInterval(watchdog),
+      { once: true }
+    );
   }
 
   /* ------------------------------------------------------------------ */

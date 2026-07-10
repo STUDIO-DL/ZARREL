@@ -114,9 +114,10 @@
   --dur-slow: 0.8s;
 
   /* --- Layout ------------------------------------------------------------- */
-  --container-max: 1280px;      /* max content + card width */
+  --container-max: 1280px;      /* max content column width */
   --page-gutter: 2.5rem;        /* horizontal breathing room on desktop */
-  --card-height: 580px;         /* hero card height (desktop) */
+  --card-max-width: 900px;      /* hero card width cap (smaller, centered) */
+  --card-aspect-ratio: 2.4 / 1; /* wide cinematic rectangle (width > height) */
 
   /* --- Z-index scale (card stacking, low -> high) -------------------------
        video / fallback  (0)  lowest: cinematic background

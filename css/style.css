@@ -185,7 +185,10 @@ video {
 .hero__card {
   position: relative;
   width: 100%;
-  height: var(--card-height);
+  max-width: var(--card-max-width);
+  margin-inline: auto;
+  aspect-ratio: var(--card-aspect-ratio);
+  height: auto;
   border-radius: var(--radius-card);
   overflow: hidden;
   isolation: isolate;
