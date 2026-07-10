@@ -118,6 +118,7 @@
   --page-gutter: 2.5rem;        /* horizontal breathing room on desktop */
   --card-max-width: 900px;      /* hero card width cap (smaller, centered) */
   --card-aspect-ratio: 2.4 / 1; /* wide cinematic rectangle (width > height) */
+  --contact-max-width: 760px;   /* contact form glass card width */
 
   /* --- Z-index scale (card stacking, low -> high) -------------------------
        video / fallback  (0)  lowest: cinematic background

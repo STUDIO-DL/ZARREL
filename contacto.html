@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contacta con ZARREL. Cuéntanos tu idea y te ayudaremos a convertirla en una experiencia digital excepcional.">
+  <meta name="theme-color" content="#fafafa">
+
+  <title>Contacto — ZARREL</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/contact-responsive.css">
+</head>
+<body>
+
+  <div class="page page--contact">
+
+    <header class="navbar reveal" id="navbar" role="banner">
+      <a href="index.html" class="navbar__logo" aria-label="ZARREL — Inicio">ZARREL</a>
+      <nav aria-label="Navegación principal">
+        <ul class="navbar__links">
+          <li><a href="index.html#servicios" class="navbar__link">Servicios</a></li>
+          <li><a href="index.html#expertise" class="navbar__link">Expertise</a></li>
+          <li><a href="index.html#blog" class="navbar__link">Blog</a></li>
+          <li><a href="contacto.html" class="navbar__link navbar__link--active" aria-current="page">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="contact" id="contacto">
+
+      <header class="contact__intro reveal" style="--reveal-delay: 0.1s">
+        <h1 class="contact__title" id="contact-heading">Hablemos.</h1>
+        <p class="contact__subtitle">
+          Queremos conocer tu idea. Completa el formulario y nos pondremos en contacto
+          contigo lo antes posible.
+        </p>
+      </header>
+
+      <!-- Panel: form + feedback cards share the same glass container slot -->
+      <div class="contact__panel reveal" style="--reveal-delay: 0.25s">
+
+        <!-- Contact form — replace action with your Formspree endpoint -->
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="YOUR_FORMSPREE_ENDPOINT_HERE"
+          method="POST"
+          novalidate
+          aria-labelledby="contact-heading"
+        >
+
+          <div class="form-field" data-field="quien-eres">
+            <label class="form-field__label" for="quien-eres">¿Quién eres?</label>
+            <div class="form-field__control">
+              <select
+                class="form-field__input form-field__select"
+                id="quien-eres"
+                name="quien_eres"
+                required
+                aria-required="true"
+                aria-describedby="quien-eres-error"
+              >
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Persona">Persona</option>
+                <option value="Empresa">Empresa</option>
+              </select>
+              <span class="form-field__chevron" aria-hidden="true"></span>
+            </div>
+            <p class="form-field__error" id="quien-eres-error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field" data-field="nombre">
+            <label class="form-field__label" for="nombre">Nombre completo</label>
+            <div class="form-field__control">
+              <input
+                class="form-field__input"
+                type="text"
+                id="nombre"
+                name="nombre"
+                autocomplete="name"
+                required
+                aria-required="true"
+                aria-describedby="nombre-error"
+              >
+            </div>
+            <p class="form-field__error" id="nombre-error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field" data-field="email">
+            <label class="form-field__label" for="email">Correo electrónico</label>
+            <div class="form-field__control">
+              <input
+                class="form-field__input"
+                type="email"
+                id="email"
+                name="email"
+                autocomplete="email"
+                inputmode="email"
+                required
+                aria-required="true"
+                aria-describedby="email-error"
+              >
+            </div>
+            <p class="form-field__error" id="email-error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field" data-field="servicio">
+            <label class="form-field__label" for="servicio">Servicio solicitado</label>
+            <div class="form-field__control">
+              <select
+                class="form-field__input form-field__select"
+                id="servicio"
+                name="servicio"
+                required
+                aria-required="true"
+                aria-describedby="servicio-error"
+              >
+                <option value="" disabled selected>Selecciona un servicio</option>
+                <option value="Desarrollo Web">Desarrollo Web</option>
+                <option value="Aplicación Móvil">Aplicación Móvil</option>
+                <option value="Diseño Gráfico">Diseño Gráfico</option>
+                <option value="Branding">Branding</option>
+                <option value="Marketing Digital">Marketing Digital</option>
+                <option value="Otro">Otro</option>
+              </select>
+              <span class="form-field__chevron" aria-hidden="true"></span>
+            </div>
+            <p class="form-field__error" id="servicio-error" role="alert" hidden></p>
+          </div>
+
+          <div class="form-field" data-field="mensaje">
+            <div class="form-field__label-row">
+              <label class="form-field__label" for="mensaje">Describe tu proyecto</label>
+              <span class="form-field__optional">Opcional</span>
+            </div>
+            <div class="form-field__control">
+              <textarea
+                class="form-field__input form-field__textarea"
+                id="mensaje"
+                name="mensaje"
+                rows="5"
+                maxlength="1000"
+                placeholder="Cuéntanos un poco más sobre lo que necesitas..."
+                aria-describedby="mensaje-hint mensaje-error"
+              ></textarea>
+            </div>
+            <div class="form-field__meta">
+              <p class="form-field__hint" id="mensaje-hint">Máximo 1000 caracteres.</p>
+              <span class="form-field__counter" id="mensaje-counter" aria-live="polite">0 / 1000</span>
+            </div>
+            <p class="form-field__error" id="mensaje-error" role="alert" hidden></p>
+          </div>
+
+          <button class="contact-form__submit" type="submit" id="contact-submit">
+            <span class="contact-form__submit-text">Enviar mensaje</span>
+            <span class="contact-form__submit-loader" aria-hidden="true"></span>
+          </button>
+
+        </form>
+
+        <!-- Success feedback -->
+        <div
+          class="contact-feedback contact-feedback--success"
+          id="contact-success"
+          role="status"
+          aria-live="polite"
+          tabindex="-1"
+          hidden
+        >
+          <div class="contact-feedback__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2"/>
+              <path d="M14 24.5L21 31.5L34 17.5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 class="contact-feedback__title">¡Mensaje enviado!</h2>
+          <p class="contact-feedback__text">
+            Gracias por contactar con ZARREL.<br>
+            Hemos recibido tu mensaje correctamente y te responderemos lo antes posible.
+          </p>
+          <button type="button" class="contact-feedback__btn" id="contact-reset">
+            Enviar otro mensaje
+          </button>
+        </div>
+
+        <!-- Error feedback -->
+        <div
+          class="contact-feedback contact-feedback--error"
+          id="contact-error"
+          role="alert"
+          aria-live="assertive"
+          tabindex="-1"
+          hidden
+        >
+          <div class="contact-feedback__icon contact-feedback__icon--error" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2"/>
+              <path d="M24 15v14M24 33v2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h2 class="contact-feedback__title">No se pudo enviar el mensaje.</h2>
+          <p class="contact-feedback__text">
+            Ha ocurrido un problema al enviar tu mensaje. Inténtalo nuevamente dentro de unos minutos.
+          </p>
+          <button type="button" class="contact-feedback__btn contact-feedback__btn--secondary" id="contact-retry">
+            Reintentar
+          </button>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/contact.js" defer></script>
+</body>
+</html>

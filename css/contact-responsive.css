@@ -1,0 +1,36 @@
+/* ==========================================================================
+   ZARREL — Contact page responsive overrides
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .contact__intro {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .contact-form,
+  .contact-feedback {
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+  }
+}
+
+@media (max-width: 600px) {
+  .page--contact {
+    padding-bottom: var(--space-2xl);
+  }
+
+  .contact-form,
+  .contact-feedback {
+    padding: 1.25rem;
+  }
+
+  .form-field__input {
+    padding: 0.8rem 0.9rem;
+    font-size: 1rem; /* prevents iOS zoom on focus */
+  }
+
+  .contact-form__submit {
+    padding: 0.95rem 1.25rem;
+  }
+}
