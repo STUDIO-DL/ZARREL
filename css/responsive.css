@@ -131,9 +131,14 @@
     width: 100%;
   }
 
-  .site-footer {
+  .site-footer__inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
+  }
+
+  .site-footer__copy {
+    order: 3;
   }
 }
 

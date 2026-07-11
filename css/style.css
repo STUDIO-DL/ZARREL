@@ -275,28 +275,74 @@ video {
   max-width: 52ch;
 }
 
-/* 6. Site footer ---------------------------------------------------------- */
+/* 6. Site footer — full-bleed black bar ---------------------------------- */
 .site-footer {
   width: 100%;
-  max-width: var(--story-max-width, 920px);
-  margin-inline: auto;
   margin-top: clamp(3rem, 8vw, 5rem);
-  padding: var(--space-lg) 0 var(--space-2xl);
+  padding: clamp(1.75rem, 4vw, 2.5rem) var(--page-gutter);
+  background: #0b1220;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.875rem;
+}
+
+.site-footer__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-sm);
-  font-size: 0.875rem;
-  color: var(--color-ink-dark-faint);
-  border-top: 1px solid var(--glass-border);
+  gap: var(--space-md);
 }
 
 .site-footer__brand {
   font-weight: var(--fw-semibold);
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--color-ink-dark-muted);
+  color: #fff;
+}
+
+.site-footer__copy {
+  flex: 1 1 auto;
+  text-align: center;
+}
+
+.site-footer__social {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-footer__social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-pill);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.site-footer__social-link:hover,
+.site-footer__social-link:focus-visible {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.site-footer__social-link svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  display: block;
 }
 
 /* 7. Utilities ------------------------------------------------------------ */
