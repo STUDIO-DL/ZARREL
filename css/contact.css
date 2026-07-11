@@ -16,7 +16,7 @@
 /* --- Contact page layout ------------------------------------------------- */
 .page--contact {
   gap: clamp(2rem, 4vw, 3.5rem);
-  padding-bottom: var(--space-3xl);
+  padding-bottom: 0;
 }
 
 .contact {

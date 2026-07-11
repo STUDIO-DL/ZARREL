@@ -275,7 +275,31 @@ video {
   max-width: 52ch;
 }
 
-/* 6. Utilities ------------------------------------------------------------ */
+/* 6. Site footer ---------------------------------------------------------- */
+.site-footer {
+  width: 100%;
+  max-width: var(--story-max-width, 920px);
+  margin-inline: auto;
+  margin-top: clamp(3rem, 8vw, 5rem);
+  padding: var(--space-lg) 0 var(--space-2xl);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  font-size: 0.875rem;
+  color: var(--color-ink-dark-faint);
+  border-top: 1px solid var(--glass-border);
+}
+
+.site-footer__brand {
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-dark-muted);
+}
+
+/* 7. Utilities ------------------------------------------------------------ */
 .visually-hidden {
   position: absolute;
   width: 1px;

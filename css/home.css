@@ -156,25 +156,3 @@
   border-color: var(--glass-border-strong);
   background: var(--glass-bg-scrolled);
 }
-
-/* --- Site footer (minimal) ----------------------------------------------- */
-.site-footer {
-  width: 100%;
-  max-width: var(--story-max-width);
-  margin-inline: auto;
-  padding: 0 0 var(--space-2xl);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
-  font-size: 0.875rem;
-  color: var(--color-ink-dark-faint);
-}
-
-.site-footer__brand {
-  font-weight: var(--fw-semibold);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-ink-dark-muted);
-}
