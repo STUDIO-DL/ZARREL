@@ -1,14 +1,14 @@
 /* ==========================================================================
-   ZARREL — Core styles (Phase 1: floating card hero)
-   Import order matters: variables first, then this file, then animations
-   and responsive (see index.html <head>).
+   ZARREL — Core styles (hero + shared chrome)
+   Import order: variables → style → home → animations → responsive
    Structure:
      1. Reset & base
-     2. Page shell (white surface, centered column)
-     3. Navbar (light glass, centered above card)
-     4. Hero (video-only card, rounded, clips video + fallback)
-     5. Hero content (headline + subtitle, dark ink below the card)
+     2. Page shell
+     3. Navbar
+     4. Hero (video card)
+     5. Hero content
      6. Utilities
+   Story sections live in home.css.
    ========================================================================== */
 
 /* 1. Reset & base --------------------------------------------------------- */
@@ -62,7 +62,7 @@ video {
   width: 100%;
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: var(--space-lg) var(--page-gutter) var(--space-2xl);
+  padding: var(--space-lg) var(--page-gutter) 0;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,8 +1,8 @@
 /**
  * ZARREL — animations.js
- * Orchestrates entrance animations for hero elements.
- * Adds .is-visible to every .reveal node once the DOM is ready, producing
- * a staggered fade-up (delays set via --reveal-delay inline in HTML).
+ * Scroll-triggered entrance animations for .reveal elements.
+ * Hero items near the top still animate on first paint; lower story
+ * sections reveal as they enter the viewport (AKQA-style rhythm).
  */
 
 (function () {
@@ -10,39 +10,55 @@
 
   const REVEAL_SELECTOR = '.reveal';
 
-  /**
-   * Trigger entrance animations on all reveal targets. Once each element's
-   * entrance finishes we flag it .is-animated, which drops its `will-change`
-   * hint (see animations.css) so no standing compositor layers linger to
-   * compete with the looping hero video.
-   */
-  function revealElements() {
-    const targets = document.querySelectorAll(REVEAL_SELECTOR);
-    targets.forEach((el) => {
-      el.addEventListener(
-        'animationend',
-        () => el.classList.add('is-animated'),
-        { once: true }
-      );
-      el.classList.add('is-visible');
-    });
+  function markAnimated(el) {
+    el.addEventListener(
+      'animationend',
+      () => el.classList.add('is-animated'),
+      { once: true }
+    );
   }
 
-  // Respect reduced-motion: skip the orchestration delay.
-  const prefersReduced =
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (prefersReduced) {
-    revealElements();
-    return;
+  function revealEl(el) {
+    if (el.classList.contains('is-visible')) return;
+    markAnimated(el);
+    el.classList.add('is-visible');
   }
 
-  // Small delay so the browser paints the fallback background first.
+  function init() {
+    const targets = Array.from(document.querySelectorAll(REVEAL_SELECTOR));
+    if (!targets.length) return;
+
+    const prefersReduced =
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      targets.forEach(revealEl);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          revealEl(entry.target);
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.12,
+      }
+    );
+
+    targets.forEach((el) => observer.observe(el));
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
-      requestAnimationFrame(revealElements);
+      requestAnimationFrame(init);
     });
   } else {
-    requestAnimationFrame(revealElements);
+    requestAnimationFrame(init);
   }
 })();

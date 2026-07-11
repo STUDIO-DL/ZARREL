@@ -28,6 +28,7 @@
     --card-max-width: 100%;
     --card-aspect-ratio: 16 / 9;
     --page-gutter: 1.5rem;
+    --illu-aspect: 4 / 3;
   }
 
   .navbar {
@@ -51,6 +52,19 @@
   .hero__headline {
     max-width: 24ch;
   }
+
+  .story__title {
+    max-width: 20ch;
+  }
+
+  .cta__actions {
+    width: 100%;
+  }
+
+  .cta__actions .btn {
+    flex: 1 1 auto;
+    min-width: min(100%, 10rem);
+  }
 }
 
 /* --- Mobile (<= 600px) -------------------------------------------------- */
@@ -60,6 +74,7 @@
     --card-aspect-ratio: 16 / 9;
     --page-gutter: 1rem;
     --radius-card: 22px;
+    --illu-aspect: 5 / 4;
   }
 
   .page {
@@ -92,6 +107,33 @@
 
   .hero__subtitle {
     max-width: 100%;
+  }
+
+  .stories {
+    gap: clamp(3.25rem, 12vw, 4.5rem);
+  }
+
+  .story__copy {
+    max-width: 100%;
+  }
+
+  .story__title,
+  .story__text {
+    max-width: 100%;
+  }
+
+  .cta__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta__actions .btn {
+    width: 100%;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
