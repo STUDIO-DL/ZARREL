@@ -134,10 +134,6 @@
     align-items: center;
     text-align: center;
   }
-
-  .site-footer__copy {
-    order: 3;
-  }
 }
 
 /* --- Very small phones (<= 380px): keep card compact -------------------- */
