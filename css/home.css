@@ -27,18 +27,25 @@
   overflow: hidden;
   isolation: isolate;
   box-shadow: var(--shadow-illu);
-  background:
-    radial-gradient(80% 70% at 20% 10%, rgba(37, 99, 235, 0.08) 0%, transparent 55%),
-    radial-gradient(70% 60% at 90% 80%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
-    linear-gradient(165deg, #f4f7fb 0%, #e8eef7 100%);
+  background: #eef2f7;
   aspect-ratio: var(--illu-aspect);
   position: relative;
 }
 
-.story__media svg {
+.story__media picture,
+.story__image {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.story__image {
+  object-fit: cover;
+  object-position: center;
+  /* Keep browser from soft-blurring downscales on retina */
+  image-rendering: auto;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .story__copy {

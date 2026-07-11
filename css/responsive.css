@@ -28,7 +28,6 @@
     --card-max-width: 100%;
     --card-aspect-ratio: 16 / 9;
     --page-gutter: 1.5rem;
-    --illu-aspect: 4 / 3;
   }
 
   .navbar {
@@ -74,7 +73,6 @@
     --card-aspect-ratio: 16 / 9;
     --page-gutter: 1rem;
     --radius-card: 22px;
-    --illu-aspect: 5 / 4;
   }
 
   .page {
