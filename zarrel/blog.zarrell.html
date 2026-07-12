@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog | Zarrell</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (Iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+
+:root {
+    --primary-blue: #0052cc;
+    --dark-blue: #003399;
+    --black: #111111;
+    --gray-dark: #222222;
+    --gray-light: #f4f6f9;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid #e1e6eb;
+    transition: var(--transition);
+}
+
+header.scrolled {
+    background-color: var(--black);
+    border-bottom: 1px solid var(--gray-dark);
+}
+
+header.scrolled .nav-links a {
+    color: var(--white);
+}
+
+header.scrolled .nav-links a:hover,
+header.scrolled .nav-links a.active {
+    color: var(--primary-blue);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    color: var(--black);
+}
+
+.nav-links a:hover, 
+.nav-links a.active {
+    color: var(--primary-blue);
+}
+
+.btn-contacto {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 10px 24px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+header.scrolled .btn-contacto,
+.btn-contacto:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+
+.hero-blog {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 160px 20px 100px 20px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-tag {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero-blog h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-blog p {
+    font-size: 1.2rem;
+    color: #a0aec0;
+}
+
+
+.featured-post {
+    max-width: 1160px;
+    margin: -50px auto 80px auto;
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+
+.featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featured-content {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category {
+    color: var(--primary-blue);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.featured-content h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.featured-content p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.post-info {
+    display: flex;
+    gap: 20px;
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+}
+
+.post-info i {
+    margin-right: 5px;
+    color: var(--primary-blue);
+}
+
+.read-btn {
+    align-self: flex-start;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 12px 28px;
+    border-radius: 5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.read-btn:hover {
+    background-color: var(--primary-blue);
+}
+
+
+.latest-posts {
+    max-width: 1200px;
+    margin: 0 auto 80px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.section-title p {
+    color: #666;
+}
+
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.post-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e1e6eb;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    border-color: var(--primary-blue);
+}
+
+.post-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: var(--gray-light); /* Respaldo si no hay imagen */
+}
+
+.card-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-content span {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.card-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+
+.card-content p {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+}
+
+.card-footer small {
+    color: #888;
+}
+
+.card-footer a {
+    font-weight: 600;
+    color: var(--black);
+}
+
+.card-footer a:hover {
+    color: var(--primary-blue);
+}
+
+
+.categories {
+    background-color: var(--gray-light);
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.categories h2 {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.category-list a {
+    background-color: var(--white);
+    color: var(--black);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border: 1px solid #e1e6eb;
+}
+
+.category-list a:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+
+.newsletter {
+    max-width: 1160px;
+    margin: 80px auto;
+    padding: 60px 40px;
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.newsletter h2 {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.newsletter p {
+    color: #a0aec0;
+    margin-bottom: 30px;
+}
+
+.newsletter form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter input {
+    flex-grow: 1;
+    padding: 15px 20px;
+    border-radius: 6px;
+    border: 1px solid var(--gray-dark);
+    background-color: var(--gray-dark);
+    color: var(--white);
+    font-size: 1rem;
+}
+
+.newsletter input:focus {
+    outline: 2px solid var(--primary-blue);
+}
+
+.newsletter button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    border: none;
+    padding: 0 25px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.newsletter button:hover {
+    background-color: var(--dark-blue);
+}
+
+
+footer {
+    
+    color: #777;
+    padding: 1px ;
+    text-align: center;
+    
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+footer img {
+    margin: 0 auto 20px auto;
+    max-height: 40px;
+}
+
+/* 
+   RESPONSIVO (DISEÑO MÓVIL)
+    */
+@media (max-width: 992px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+        margin: -30px 20px 60px 20px;
+    }
+    .featured-content {
+        padding: 30px;
+    }
+    .hero-blog h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+    .newsletter form {
+        flex-direction: column;
+    }
+    .newsletter button {
+        padding: 15px;
+    }
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+           
+
+
+            <ul class="nav-links">
+                <li><a href="servicios.html">Servicios</a></li>
+                <li><a href="experiencia.html">Experiencia</a></li>
+                <li><a class="active" href="blog.html">Blog</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+
+            <a href="contacto.html" class="btn-contacto">
+                Hablemos
+            </a>
+        </nav>
+    </header>
+
+  
+    <!-- HERO -->
+  
+    <section class="hero-blog">
+        <div class="hero-content">
+            <span class="hero-tag">BLOG</span>
+            <h1>Ideas, tecnología e innovación para construir el futuro digital.</h1>
+            <p>
+                Exploramos desarrollo web, inteligencia artificial,
+                diseño de productos digitales, automatización,
+                emprendimiento tecnológico y mucho más.
+            </p>
+        </div>
+    </section>
+
+    
+    <!-- ARTÍCULO DESTACADO -->
+    <section class="featured-post">
+        <div class="featured-image">
+            <img src="/home/zharik/Documentos/zarrel/articulo-destacado.jpg" >
+        </div>
+
+        <div class="featured-content">
+            <span class="category">Inteligencia Artificial</span>
+            <h2>Cómo la Inteligencia Artificial está transformando las empresas africanas</h2>
+            <p>
+                Una mirada al impacto real de la IA
+                en la automatización, la productividad
+                y la innovación empresarial en África.
+            </p>
+
+            <div class="post-info">
+                <span>
+                    <i class="fa-regular fa-clock"></i>
+                    8 min de lectura
+                </span>
+                <span>
+                    <i class="fa-regular fa-calendar"></i>
+                    10 Julio 2026
+                </span>
+            </div>
+
+            <a href="#" class="read-btn">
+                Leer artículo
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+    <!-- ÚLTIMOS ARTÍCULOS -->
+   
+    <section class="latest-posts">
+        <div class="section-title">
+            <h2>Últimos artículos</h2>
+            <p>Descubre nuestras últimas publicaciones.</p>
+        </div>
+
+        <div class="posts-grid">
+            <!-- CARD 1 -->
+            <article class="post-card">
+                <img src="/home/zharik/Documentos/zarrel/uix.jpeg" >
+                <div class="card-content">
+                    <span>UX/UI</span>
+                    <h3>Diseñando aplicaciones que la gente realmente quiere usar</h3>
+                    <p>Aprende los principios que utilizamos para crear productos digitales intuitivos.</p>
+                    <div class="card-footer">
+                        <small>6 min</small>
+                        <a href="#">Leer →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="post-card">
+                <img src="/home/zharik/Documentos/zarrel/desarrollo.jpeg" >
+                <div class="card-content">
+                    <span>Desarrollo</span>
+                    <h3>Flutter vs React Native en 2026</h3>
+                    <p>Comparativa completa sobre rendimiento, productividad y experiencia de desarrollo.</p>
+                    <div class="card-footer">
+                        <small>12 min</small>
+                        <a href="#">Leer →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="post-card">
+                <img src="/home/zharik/Documentos/zarrel/empredimiento.jpeg" >
+                <div class="card-content">
+                    <span>Emprendimiento</span>
+                    <h3>Qué necesita una startup antes de desarrollar su primera app</h3>
+                    <p>Los errores más comunes y cómo evitarlos antes de invertir.</p>
+                    <div class="card-footer">
+                        <small>7 min</small>
+                        <a href="#">Leer →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 4 -->
+            <article class="post-card">
+                <img src="/home/zharik/Documentos/zarrel/ia.jpeg" >
+                <div class="card-content">
+                    <span>IA</span>
+                    <h3>Automatización con IA: 10 tareas que cualquier empresa puede eliminar hoy</h3>
+                    <p>Casos reales de automatización para pequeñas y medianas empresas.</p>
+                    <div class="card-footer">
+                        <small>9 min</small>
+                        <a href="#">Leer →</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARD 5 -->
+            <article class="post-card">
+                <img src="/home/zharik/Documentos/zarrel/personalizar.jpeg" >
+                <div class="card-content">
+                    <span>Branding</span>
+                    <h3>Cómo diseñamos una identidad visual profesional</h3>
+                    <p>El proceso detrás de la creación de marcas modernas y memorables.</p>
+                    <div class="card-footer">
+                        <small>5 min</small>
+                        <a href="#">Leer →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    
+    <section class="categories">
+        <h2>Explora por categoría</h2>
+        <div class="category-list">
+            <a href="#">Desarrollo Web</a>
+            <a href="#">Aplicaciones Móviles</a>
+            <a href="#">Inteligencia Artificial</a>
+            <a href="#">Automatización</a>
+            <a href="#">Diseño UX/UI</a>
+            <a href="#">Branding</a>
+            <a href="#">Marketing Digital</a>
+            <a href="#">Casos de Estudio</a>
+            <a href="#">Noticias</a>
+        </div>
+    </section>
+
+    
+    <!-- NEWSLETTER -->
+   
+    <section class="newsletter">
+        <h2>Mantente un paso por delante.</h2>
+        <p>Recibe artículos exclusivos, recursos y novedades sobre tecnología, inteligencia artificial y desarrollo digital.</p>
+        <form id="form-newsletter">
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button type="submit">Suscribirme</button>
+        </form>
+    </section>
+
+    <!-- CTA -->
+
+    <!-- FOOTER -->
+   
+    <footer>
+        
+        <p>© 2026 Zarrell. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Enlace al archivo JavaScript -->
+    <script >
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. EFECTO DINÁMICO EN EL MENU AL HACER SCROLL
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+        // Si bajamos más de 50px, cambia de aspecto
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // 2. VALIDACIÓN Y GESTIÓN DE LA NEWSLETTER
+    const newsletterForm = document.getElementById('form-newsletter');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Detiene el comportamiento por defecto (recargar web)
+            
+            const emailInput = newsletterForm.querySelector('input[type="email"]');
+            const emailValue = emailInput.value.trim();
+            
+            if (emailValue === "") {
+                alert("Por favor, ingresa un correo electrónico.");
+            } else {
+                // Mensaje temporal de simulación exitosa
+                alert(`¡Éxito! Te has suscrito correctamente con el correo: ${emailValue}`);
+                emailInput.value = ""; // Limpiar campo del formulario
+            }
+        });
+    }
+});
+
+
+    </script>
+</body>
+
+</html>
