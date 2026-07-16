@@ -1,424 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Blog — ZARREL</title>
-
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome (Iconos) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <!-- Shared ZARREL chrome (navbar) -->
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
-
-<style>
-
-
-:root {
-    --primary-blue: #0052cc;
-    --dark-blue: #003399;
-    --black: #111111;
-    --gray-dark: #222222;
-    --gray-light: #f4f6f9;
-    --white: #ffffff;
-    --transition: all 0.3s ease;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--white);
-    color: var(--black);
-    line-height: 1.6;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: var(--transition);
-}
-
-
-.page--blog {
-    padding-bottom: 0;
-}
-
-.hero-blog {
-    background-color: var(--black);
-    color: var(--white);
-    padding: 80px 20px 100px 20px;
-    text-align: center;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero-tag {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    padding: 6px 12px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    border-radius: 4px;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.hero-blog h1 {
-    font-size: 2.8rem;
-    font-weight: 800;
-    line-height: 1.2;
-    margin-bottom: 20px;
-}
-
-.hero-blog p {
-    font-size: 1.2rem;
-    color: #a0aec0;
-}
-
-
-.featured-post {
-    max-width: 1160px;
-    margin: -50px auto 80px auto;
-    background-color: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 10;
-}
-
-.featured-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.featured-content {
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.category {
-    color: var(--primary-blue);
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-}
-
-.featured-content h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    line-height: 1.3;
-}
-
-.featured-content p {
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.post-info {
-    display: flex;
-    gap: 20px;
-    color: #777;
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-}
-
-.post-info i {
-    margin-right: 5px;
-    color: var(--primary-blue);
-}
-
-.read-btn {
-    align-self: flex-start;
-    background-color: var(--black);
-    color: var(--white);
-    padding: 12px 28px;
-    border-radius: 5px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.read-btn:hover {
-    background-color: var(--primary-blue);
-}
-
-
-.latest-posts {
-    max-width: 1200px;
-    margin: 0 auto 80px auto;
-    padding: 0 20px;
-}
-
-.section-title {
-    margin-bottom: 40px;
-}
-
-.section-title h2 {
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-    font-weight: 800;
-}
-
-.section-title p {
-    color: #666;
-}
-
-.posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 30px;
-}
-
-.post-card {
-    background-color: var(--white);
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #e1e6eb;
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
-}
-
-.post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    border-color: var(--primary-blue);
-}
-
-.post-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    background-color: var(--gray-light); /* Respaldo si no hay imagen */
-}
-
-.card-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-}
-
-.card-content span {
-    color: var(--primary-blue);
-    font-weight: 700;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    display: inline-block;
-}
-
-.card-content h3 {
-    font-size: 1.3rem;
-    margin-bottom: 12px;
-    line-height: 1.4;
-}
-
-.card-content p {
-    color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-    flex-grow: 1;
-}
-
-.card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #eee;
-    padding-top: 15px;
-}
-
-.card-footer small {
-    color: #888;
-}
-
-.card-footer a {
-    font-weight: 600;
-    color: var(--black);
-}
-
-.card-footer a:hover {
-    color: var(--primary-blue);
-}
-
-
-.categories {
-    background-color: var(--gray-light);
-    padding: 60px 20px;
-    text-align: center;
-}
-
-.categories h2 {
-    margin-bottom: 30px;
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-.category-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.category-list a {
-    background-color: var(--white);
-    color: var(--black);
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-weight: 500;
-    font-size: 0.95rem;
-    border: 1px solid #e1e6eb;
-}
-
-.category-list a:hover {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    border-color: var(--primary-blue);
-}
-
-
-.newsletter {
-    max-width: 1160px;
-    margin: 80px auto;
-    padding: 60px 40px;
-    background-color: var(--black);
-    color: var(--white);
-    border-radius: 12px;
-    text-align: center;
-}
-
-.newsletter h2 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-    font-weight: 800;
-}
-
-.newsletter p {
-    color: #a0aec0;
-    margin-bottom: 30px;
-}
-
-.newsletter form {
-    display: flex;
-    gap: 10px;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.newsletter input {
-    flex-grow: 1;
-    padding: 15px 20px;
-    border-radius: 6px;
-    border: 1px solid var(--gray-dark);
-    background-color: var(--gray-dark);
-    color: var(--white);
-    font-size: 1rem;
-}
-
-.newsletter input:focus {
-    outline: 2px solid var(--primary-blue);
-}
-
-.newsletter button {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    border: none;
-    padding: 0 25px;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.newsletter button:hover {
-    background-color: var(--dark-blue);
-}
-
-
-footer {
-    
-    color: #777;
-    padding: 1px ;
-    text-align: center;
-    
-}
-
-footer p {
-    font-size: 0.9rem;
-}
-
-footer img {
-    margin: 0 auto 20px auto;
-    max-height: 40px;
-}
-
-/* 
-   RESPONSIVO (DISEÑO MÓVIL)
-    */
-@media (max-width: 992px) {
-    .featured-post {
-        grid-template-columns: 1fr;
-        margin: -30px 20px 60px 20px;
-    }
-    .featured-content {
-        padding: 30px;
-    }
-    .hero-blog h1 {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .newsletter form {
-        flex-direction: column;
-    }
-    .newsletter button {
-        padding: 15px;
-    }
-}
-
-</style>
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Blog de ZARREL — Ideas sobre desarrollo web, apps, IA, diseño y producto digital.">
+  <meta name="theme-color" content="#fafafa">
+
+  <title>Blog — ZARREL</title>
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
-
 <body>
 
   <div class="page page--blog">
@@ -435,202 +37,237 @@ footer img {
       </nav>
     </header>
 
+    <main class="blog" id="main">
+
+      <header class="blog-intro reveal" style="--reveal-delay: 0.1s">
+        <p class="blog-intro__eyebrow">Blog</p>
+        <h1 class="blog-intro__title">Ideas que impulsan productos digitales.</h1>
+        <p class="blog-intro__text">
+          Exploramos desarrollo web, inteligencia artificial, diseño de producto,
+          automatización y lo que hace que una experiencia digital se sienta premium.
+        </p>
+      </header>
+
+      <article class="blog-featured reveal" style="--reveal-delay: 0.2s">
+        <div class="blog-featured__media">
+          <img
+            src="zarrel/articulo-destacado.jpg"
+            alt="Artículo destacado sobre inteligencia artificial"
+            width="800"
+            height="500"
+            loading="eager"
+            decoding="async"
+          >
+        </div>
+        <div class="blog-featured__body">
+          <span class="blog-tag">Inteligencia Artificial</span>
+          <h2 class="blog-featured__title">
+            Cómo la Inteligencia Artificial está transformando las empresas
+          </h2>
+          <p class="blog-featured__excerpt">
+            Una mirada al impacto real de la IA en la automatización,
+            la productividad y la innovación empresarial.
+          </p>
+          <div class="blog-featured__meta">
+            <span>8 min de lectura</span>
+            <span>10 Julio 2026</span>
+          </div>
+          <a href="#" class="btn btn--primary blog-featured__cta">Leer artículo</a>
+        </div>
+      </article>
+
+      <section class="blog-latest" aria-labelledby="latest-heading">
+        <div class="blog-section__head reveal">
+          <h2 class="blog-section__title" id="latest-heading">Últimos artículos</h2>
+          <p class="blog-section__subtitle">Publicaciones recientes del equipo ZARREL.</p>
+        </div>
+
+        <div class="blog-grid">
+          <article class="blog-card reveal">
+            <div class="blog-card__media">
+              <img src="zarrel/uix.jpeg" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-tag">UX/UI</span>
+              <h3 class="blog-card__title">Diseñando aplicaciones que la gente realmente quiere usar</h3>
+              <p class="blog-card__excerpt">
+                Principios que usamos para crear productos digitales intuitivos y memorables.
+              </p>
+              <div class="blog-card__footer">
+                <span class="blog-card__time">6 min</span>
+                <a class="blog-card__link" href="#">Leer →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-card__media">
+              <img src="zarrel/desarrollo.jpeg" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-tag">Desarrollo</span>
+              <h3 class="blog-card__title">Flutter vs React Native en 2026</h3>
+              <p class="blog-card__excerpt">
+                Comparativa sobre rendimiento, productividad y experiencia de desarrollo.
+              </p>
+              <div class="blog-card__footer">
+                <span class="blog-card__time">12 min</span>
+                <a class="blog-card__link" href="#">Leer →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-card__media">
+              <img src="zarrel/empredimiento.jpeg" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-tag">Emprendimiento</span>
+              <h3 class="blog-card__title">Qué necesita una startup antes de su primera app</h3>
+              <p class="blog-card__excerpt">
+                Errores comunes y cómo evitarlos antes de invertir en desarrollo.
+              </p>
+              <div class="blog-card__footer">
+                <span class="blog-card__time">7 min</span>
+                <a class="blog-card__link" href="#">Leer →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-card__media">
+              <img src="zarrel/ia.jpeg" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-tag">IA</span>
+              <h3 class="blog-card__title">Automatización con IA: 10 tareas que puedes eliminar hoy</h3>
+              <p class="blog-card__excerpt">
+                Casos reales de automatización para pequeñas y medianas empresas.
+              </p>
+              <div class="blog-card__footer">
+                <span class="blog-card__time">9 min</span>
+                <a class="blog-card__link" href="#">Leer →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-card__media">
+              <img src="zarrel/personalizar.jpeg" alt="" width="640" height="400" loading="lazy" decoding="async">
+            </div>
+            <div class="blog-card__body">
+              <span class="blog-tag">Branding</span>
+              <h3 class="blog-card__title">Cómo diseñamos una identidad visual profesional</h3>
+              <p class="blog-card__excerpt">
+                El proceso detrás de marcas modernas, coherentes y memorables.
+              </p>
+              <div class="blog-card__footer">
+                <span class="blog-card__time">5 min</span>
+                <a class="blog-card__link" href="#">Leer →</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="blog-categories reveal" aria-labelledby="cats-heading">
+        <h2 class="blog-categories__title" id="cats-heading">Explora por categoría</h2>
+        <ul class="blog-categories__list">
+          <li><a href="#">Desarrollo Web</a></li>
+          <li><a href="#">Apps Móviles</a></li>
+          <li><a href="#">Inteligencia Artificial</a></li>
+          <li><a href="#">Automatización</a></li>
+          <li><a href="#">Diseño UX/UI</a></li>
+          <li><a href="#">Branding</a></li>
+          <li><a href="#">Marketing Digital</a></li>
+          <li><a href="#">Casos de Estudio</a></li>
+        </ul>
+      </section>
+
+      <section class="blog-newsletter reveal" aria-labelledby="news-heading">
+        <h2 class="blog-newsletter__title" id="news-heading">Mantente un paso por delante.</h2>
+        <p class="blog-newsletter__text">
+          Recibe artículos y recursos sobre tecnología, IA y producto digital.
+        </p>
+        <form class="blog-newsletter__form" id="form-newsletter">
+          <label class="visually-hidden" for="newsletter-email">Correo electrónico</label>
+          <input
+            class="blog-newsletter__input"
+            id="newsletter-email"
+            type="email"
+            name="email"
+            placeholder="Tu correo electrónico"
+            required
+            autocomplete="email"
+          >
+          <button class="btn btn--primary" type="submit">Suscribirme</button>
+        </form>
+      </section>
+
+    </main>
   </div>
 
-  
-    <!-- HERO -->
-  
-    <section class="hero-blog">
-        <div class="hero-content">
-            <span class="hero-tag">BLOG</span>
-            <h1>Ideas, tecnología e innovación para construir el futuro digital.</h1>
-            <p>
-                Exploramos desarrollo web, inteligencia artificial,
-                diseño de productos digitales, automatización,
-                emprendimiento tecnológico y mucho más.
-            </p>
-        </div>
-    </section>
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__copy">© 2026 ZARREL. Todos los derechos reservados.</p>
+      <div class="site-footer__social">
+        <a
+          href="https://www.instagram.com/zarrel.tech/"
+          class="site-footer__social-link site-footer__social-link--instagram"
+          aria-label="Instagram de ZARREL"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.9.3 2.3.4.6.2 1 .5 1.5 1 .4.4.7.9 1 1.5.2.4.4 1.1.4 2.3.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.9-.4 2.3-.2.6-.5 1-1 1.5-.4.4-.9.7-1.5 1-.4.2-1.1.4-2.3.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.9-.3-2.3-.4-.6-.2-1-.5-1.5-1-.4-.4-.7-.9-1-1.5-.2-.4-.4-1.1-.4-2.3C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.9.4-2.3.2-.6.5-1 1-1.5.4-.4.9-.7 1.5-1 .4-.2 1.1-.4 2.3-.4C8.4 2.2 8.8 2.2 12 2.2m0 1.8c-3.2 0-3.5 0-4.8.1-1.1 0-1.7.2-2.1.4-.5.2-.8.4-1.1.7-.3.3-.5.6-.7 1.1-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.8s0 3.5.1 4.8c0 1.1.2 1.7.4 2.1.2.5.4.8.7 1.1.3.3.6.5 1.1.7.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.8.1s3.5 0 4.8-.1c1.1 0 1.7-.2 2.1-.4.5-.2.8-.4 1.1-.7.3-.3.5-.6.7-1.1.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.8s0-3.5-.1-4.8c0-1.1-.2-1.7-.4-2.1-.2-.5-.4-.8-.7-1.1-.3-.3-.6-.5-1.1-.7-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.8-.1zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 8.1a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.4-8.3a1.2 1.2 0 1 1-2.3 0 1.2 1.2 0 0 1 2.3 0z"/>
+          </svg>
+        </a>
+        <a
+          href="https://vm.tiktok.com/ZS9M97YbpFp11-IMT8v/"
+          class="site-footer__social-link site-footer__social-link--tiktok"
+          aria-label="TikTok de ZARREL"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#25F4EE" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.88-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05 6.34 6.34 0 1 0 6.34 6.34V8.73a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z" transform="translate(-0.55 0.45)"/>
+            <path fill="#FE2C55" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.88-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05 6.34 6.34 0 1 0 6.34 6.34V8.73a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z" transform="translate(0.55 -0.45)"/>
+            <path fill="#fff" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.88-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05 6.34 6.34 0 1 0 6.34 6.34V8.73a8.2 8.2 0 0 0 4.76 1.52V6.79a4.85 4.85 0 0 1-1-.1z"/>
+          </svg>
+        </a>
+        <a
+          href="https://wa.me/34627222064"
+          class="site-footer__social-link site-footer__social-link--whatsapp"
+          aria-label="WhatsApp — +34 627 22 20 64"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.3-1.4A9.9 9.9 0 1 0 12.04 2zm5.8 14.1c-.2.7-1.3 1.2-1.8 1.3-.5.1-1 .2-1.7-.1-.4-.2-.9-.3-1.5-.6-2.7-1.5-4.4-4-4.6-4.2-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.4 1-.4h.7c.2 0 .5 0 .7.6.2.7.8 2.3.8 2.4.1.1.1.3 0 .5l-.4.6c-.1.2-.3.3-.4.5-.2.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.5.1.7-.1l.9-1.1c.2-.2.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1 1-.1 1.7z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
-    
-    <!-- ARTÍCULO DESTACADO -->
-    <section class="featured-post">
-        <div class="featured-image">
-            <img src="zarrel/articulo-destacado.jpg" >
-        </div>
-
-        <div class="featured-content">
-            <span class="category">Inteligencia Artificial</span>
-            <h2>Cómo la Inteligencia Artificial está transformando las empresas africanas</h2>
-            <p>
-                Una mirada al impacto real de la IA
-                en la automatización, la productividad
-                y la innovación empresarial en África.
-            </p>
-
-            <div class="post-info">
-                <span>
-                    <i class="fa-regular fa-clock"></i>
-                    8 min de lectura
-                </span>
-                <span>
-                    <i class="fa-regular fa-calendar"></i>
-                    10 Julio 2026
-                </span>
-            </div>
-
-            <a href="#" class="read-btn">
-                Leer artículo
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-    <!-- ÚLTIMOS ARTÍCULOS -->
-   
-    <section class="latest-posts">
-        <div class="section-title">
-            <h2>Últimos artículos</h2>
-            <p>Descubre nuestras últimas publicaciones.</p>
-        </div>
-
-        <div class="posts-grid">
-            <!-- CARD 1 -->
-            <article class="post-card">
-                <img src="zarrel/uix.jpeg" >
-                <div class="card-content">
-                    <span>UX/UI</span>
-                    <h3>Diseñando aplicaciones que la gente realmente quiere usar</h3>
-                    <p>Aprende los principios que utilizamos para crear productos digitales intuitivos.</p>
-                    <div class="card-footer">
-                        <small>6 min</small>
-                        <a href="#">Leer →</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- CARD 2 -->
-            <article class="post-card">
-                <img src="zarrel/desarrollo.jpeg" >
-                <div class="card-content">
-                    <span>Desarrollo</span>
-                    <h3>Flutter vs React Native en 2026</h3>
-                    <p>Comparativa completa sobre rendimiento, productividad y experiencia de desarrollo.</p>
-                    <div class="card-footer">
-                        <small>12 min</small>
-                        <a href="#">Leer →</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- CARD 3 -->
-            <article class="post-card">
-                <img src="zarrel/empredimiento.jpeg" >
-                <div class="card-content">
-                    <span>Emprendimiento</span>
-                    <h3>Qué necesita una startup antes de desarrollar su primera app</h3>
-                    <p>Los errores más comunes y cómo evitarlos antes de invertir.</p>
-                    <div class="card-footer">
-                        <small>7 min</small>
-                        <a href="#">Leer →</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- CARD 4 -->
-            <article class="post-card">
-                <img src="zarrel/ia.jpeg" >
-                <div class="card-content">
-                    <span>IA</span>
-                    <h3>Automatización con IA: 10 tareas que cualquier empresa puede eliminar hoy</h3>
-                    <p>Casos reales de automatización para pequeñas y medianas empresas.</p>
-                    <div class="card-footer">
-                        <small>9 min</small>
-                        <a href="#">Leer →</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- CARD 5 -->
-            <article class="post-card">
-                <img src="/zarrel/personalizar.jpeg" >
-                <div class="card-content">
-                    <span>Branding</span>
-                    <h3>Cómo diseñamos una identidad visual profesional</h3>
-                    <p>El proceso detrás de la creación de marcas modernas y memorables.</p>
-                    <div class="card-footer">
-                        <small>5 min</small>
-                        <a href="#">Leer →</a>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- CATEGORÍAS -->
-    
-    <section class="categories">
-        <h2>Explora por categoría</h2>
-        <div class="category-list">
-            <a href="#">Desarrollo Web</a>
-            <a href="#">Aplicaciones Móviles</a>
-            <a href="#">Inteligencia Artificial</a>
-            <a href="#">Automatización</a>
-            <a href="#">Diseño UX/UI</a>
-            <a href="#">Branding</a>
-            <a href="#">Marketing Digital</a>
-            <a href="#">Casos de Estudio</a>
-            <a href="#">Noticias</a>
-        </div>
-    </section>
-
-    
-    <!-- NEWSLETTER -->
-   
-    <section class="newsletter">
-        <h2>Mantente un paso por delante.</h2>
-        <p>Recibe artículos exclusivos, recursos y novedades sobre tecnología, inteligencia artificial y desarrollo digital.</p>
-        <form id="form-newsletter">
-            <input type="email" placeholder="Tu correo electrónico" required>
-            <button type="submit">Suscribirme</button>
-        </form>
-    </section>
-
-    <!-- CTA -->
-
-    <!-- FOOTER -->
-   
-    <footer>
-        
-        <p>© 2026 Zarrell. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- Enlace al archivo JavaScript -->
-    <script src="js/navbar.js" defer></script>
-    <script src="js/animations.js" defer></script>
-    <script>
-
-document.addEventListener('DOMContentLoaded', () => {
-    // VALIDACIÓN Y GESTIÓN DE LA NEWSLETTER
-    const newsletterForm = document.getElementById('form-newsletter');
-    
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const emailInput = newsletterForm.querySelector('input[type="email"]');
-            const emailValue = emailInput.value.trim();
-            
-            if (emailValue === "") {
-                alert("Por favor, ingresa un correo electrónico.");
-            } else {
-                alert(`¡Éxito! Te has suscrito correctamente con el correo: ${emailValue}`);
-                emailInput.value = "";
-            }
-        });
-    }
-});
-
-    </script>
+  <script src="js/navbar.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('form-newsletter');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = form.querySelector('input[type="email"]');
+        const value = (input && input.value || '').trim();
+        if (!value) {
+          alert('Por favor, ingresa un correo electrónico.');
+          return;
+        }
+        alert('¡Gracias! Te has suscrito correctamente.');
+        input.value = '';
+      });
+    });
+  </script>
 </body>
-
 </html>
