@@ -40,15 +40,87 @@
     <main class="contact" id="contacto">
 
       <header class="contact__intro reveal" style="--reveal-delay: 0.1s">
+        <p class="contact__eyebrow">Contacto</p>
         <h1 class="contact__title" id="contact-heading">Hablemos.</h1>
         <p class="contact__subtitle">
-          Queremos conocer tu idea. Completa el formulario y nos pondremos en contacto
-          contigo lo antes posible.
+          Elige cómo quieres conectar con nosotros: formulario, una llamada
+          o WhatsApp. Respondemos lo antes posible.
         </p>
       </header>
 
+      <ul class="contact-channels reveal" style="--reveal-delay: 0.18s" aria-label="Formas de contacto">
+        <li>
+          <a class="contact-channel contact-channel--form" href="#formulario">
+            <span class="contact-channel__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M8 9h8M8 12.5h8M8 16h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h2 class="contact-channel__title">Formulario</h2>
+            <p class="contact-channel__text">
+              Cuéntanos tu idea con detalle y te respondemos por correo.
+            </p>
+            <span class="contact-channel__cta">
+              Ir al formulario
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact-channel contact-channel--call"
+            href="tel:+34627222064"
+            aria-label="Llamar a ZARREL al +34 627 22 20 64"
+          >
+            <span class="contact-channel__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8.5 4.5h3l1.2 3.2-1.6 1.4a12.5 12.5 0 0 0 5.3 5.3l1.4-1.6 3.2 1.2v3a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4.5 6.7a2 2 0 0 1 2-2.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <h2 class="contact-channel__title">Programar una llamada</h2>
+            <p class="contact-channel__text">
+              Prefieres hablar. Llámanos y agendamos una conversación.
+            </p>
+            <span class="contact-channel__cta">
+              +34 627 22 20 64
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="contact-channel contact-channel--whatsapp"
+            href="https://wa.me/34627222064?text=Hola%20ZARREL%2C%20me%20gustar%C3%ADa%20hablar%20sobre%20un%20proyecto."
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Escribir a ZARREL por WhatsApp"
+          >
+            <span class="contact-channel__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.04 2a9.9 9.9 0 0 0-8.5 14.9L2 22l5.3-1.4A9.9 9.9 0 1 0 12.04 2zm5.8 14.1c-.2.7-1.3 1.2-1.8 1.3-.5.1-1 .2-1.7-.1-.4-.2-.9-.3-1.5-.6-2.7-1.5-4.4-4-4.6-4.2-.2-.2-1.5-2-1.5-3.8s1-2.7 1.3-3.1c.3-.3.7-.4 1-.4h.7c.2 0 .5 0 .7.6.2.7.8 2.3.8 2.4.1.1.1.3 0 .5l-.4.6c-.1.2-.3.3-.4.5-.2.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1 1 2 1.3 2.3 1.4.3.1.5.1.7-.1l.9-1.1c.2-.2.4-.2.7-.1.3.1 1.7.8 2 .9.3.2.5.2.6.3.1.2.1 1-.1 1.7z"/>
+              </svg>
+            </span>
+            <h2 class="contact-channel__title">Mensajería WhatsApp</h2>
+            <p class="contact-channel__text">
+              Escríbenos por chat para una respuesta rápida y directa.
+            </p>
+            <span class="contact-channel__cta">
+              Abrir WhatsApp
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+
       <!-- Panel: form + feedback cards share the same glass container slot -->
-      <div class="contact__panel reveal" style="--reveal-delay: 0.25s">
+      <div class="contact__panel reveal" id="formulario" style="--reveal-delay: 0.28s">
 
         <!-- Contact form — replace action with your Formspree endpoint -->
         <form
@@ -57,8 +129,14 @@
           action="https://formspree.io/f/mnjeapbd"
           method="POST"
           novalidate
-          aria-labelledby="contact-heading"
+          aria-labelledby="form-heading"
         >
+          <div class="contact-form__heading">
+            <h2 class="contact-form__heading-title" id="form-heading">Envíanos un mensaje</h2>
+            <p class="contact-form__heading-text">
+              Completa los campos y nos pondremos en contacto contigo.
+            </p>
+          </div>
 
           <div class="form-field" data-field="quien-eres">
             <label class="form-field__label" for="quien-eres">¿Quién eres?</label>
