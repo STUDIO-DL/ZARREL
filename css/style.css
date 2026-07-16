@@ -361,6 +361,15 @@ video {
   box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
 }
 
+/* --- Active nav link ----------------------------------------------------- */
+.navbar__link--active {
+  color: var(--color-ink-dark);
+}
+
+.navbar__link--active::after {
+  transform: scaleX(1);
+}
+
 /* 7. Utilities ------------------------------------------------------------ */
 .visually-hidden {
   position: absolute;

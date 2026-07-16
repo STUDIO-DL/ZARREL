@@ -5,13 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Blog | Zarrell</title>
+    <title>Blog — ZARREL</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome (Iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Shared ZARREL chrome (navbar) -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
 <style>
 
@@ -52,81 +60,14 @@ a {
 }
 
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    border-bottom: 1px solid #e1e6eb;
-    transition: var(--transition);
+.page--blog {
+    padding-bottom: 0;
 }
-
-header.scrolled {
-    background-color: var(--black);
-    border-bottom: 1px solid var(--gray-dark);
-}
-
-header.scrolled .nav-links a {
-    color: var(--white);
-}
-
-header.scrolled .nav-links a:hover,
-header.scrolled .nav-links a.active {
-    color: var(--primary-blue);
-}
-
-.navbar {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 40px;
-    object-fit: contain;
-}
-
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-}
-
-.nav-links a {
-    font-weight: 500;
-    color: var(--black);
-}
-
-.nav-links a:hover, 
-.nav-links a.active {
-    color: var(--primary-blue);
-}
-
-.btn-contacto {
-    background-color: var(--black);
-    color: var(--white);
-    padding: 10px 24px;
-    border-radius: 5px;
-    font-weight: 600;
-}
-
-header.scrolled .btn-contacto,
-.btn-contacto:hover {
-    background-color: var(--primary-blue);
-    color: var(--white);
-}
-
 
 .hero-blog {
     background-color: var(--black);
     color: var(--white);
-    padding: 160px 20px 100px 20px;
+    padding: 80px 20px 100px 20px;
     text-align: center;
 }
 
@@ -465,13 +406,6 @@ footer img {
 }
 
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 15px;
-    }
-    .nav-links {
-        gap: 15px;
-    }
     .newsletter form {
         flex-direction: column;
     }
@@ -487,23 +421,21 @@ footer img {
 
 <body>
 
-    <header>
-        <nav class="navbar">
-           
+  <div class="page page--blog">
 
-
-            <ul class="nav-links">
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a href="experiencia.html">Experiencia</a></li>
-                <li><a class="active" href="blog.html">Blog</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-            </ul>
-
-            <a href="contacto.html" class="btn-contacto">
-                Hablemos
-            </a>
-        </nav>
+    <header class="navbar reveal" id="navbar" role="banner">
+      <a href="index.html" class="navbar__logo" aria-label="ZARREL — Inicio">ZARREL</a>
+      <nav aria-label="Navegación principal">
+        <ul class="navbar__links">
+          <li><a href="index.html#servicios" class="navbar__link">Servicios</a></li>
+          <li><a href="index.html#expertise" class="navbar__link">Expertise</a></li>
+          <li><a href="blog.html" class="navbar__link navbar__link--active" aria-current="page">Blog</a></li>
+          <li><a href="contacto.html" class="navbar__link">Contacto</a></li>
+        </ul>
+      </nav>
     </header>
+
+  </div>
 
   
     <!-- HERO -->
@@ -673,28 +605,17 @@ footer img {
     </footer>
 
     <!-- Enlace al archivo JavaScript -->
-    <script >
+    <script src="js/navbar.js" defer></script>
+    <script src="js/animations.js" defer></script>
+    <script>
 
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. EFECTO DINÁMICO EN EL MENU AL HACER SCROLL
-    const header = document.querySelector('header');
-    
-    window.addEventListener('scroll', () => {
-        // Si bajamos más de 50px, cambia de aspecto
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // 2. VALIDACIÓN Y GESTIÓN DE LA NEWSLETTER
+    // VALIDACIÓN Y GESTIÓN DE LA NEWSLETTER
     const newsletterForm = document.getElementById('form-newsletter');
     
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
-            e.preventDefault(); // Detiene el comportamiento por defecto (recargar web)
+            e.preventDefault();
             
             const emailInput = newsletterForm.querySelector('input[type="email"]');
             const emailValue = emailInput.value.trim();
@@ -702,14 +623,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (emailValue === "") {
                 alert("Por favor, ingresa un correo electrónico.");
             } else {
-                // Mensaje temporal de simulación exitosa
                 alert(`¡Éxito! Te has suscrito correctamente con el correo: ${emailValue}`);
-                emailInput.value = ""; // Limpiar campo del formulario
+                emailInput.value = "";
             }
         });
     }
 });
-
 
     </script>
 </body>

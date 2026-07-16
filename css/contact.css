@@ -4,14 +4,7 @@
    Consumes design tokens from variables.css.
    ========================================================================== */
 
-/* --- Active nav link ----------------------------------------------------- */
-.navbar__link--active {
-  color: var(--color-ink-dark);
-}
-
-.navbar__link--active::after {
-  transform: scaleX(1);
-}
+/* --- Active nav link (shared via style.css) ------------------------------ */
 
 /* --- Contact page layout ------------------------------------------------- */
 .page--contact {
