@@ -1,40 +1,21 @@
 /* ==========================================================================
-   ZARREL — Contact page responsive overrides
+   ZARREL — Contact page responsive
    ========================================================================== */
 
-@media (max-width: 900px) {
-  .contact-channels {
+@media (max-width: 860px) {
+  .contact__layout {
     grid-template-columns: 1fr;
-  }
-
-  .contact-channel {
-    min-height: 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .contact-form,
-  .contact-feedback {
-    padding: 1.5rem;
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 600px) {
-  .page--contact {
-    padding-bottom: 0;
-  }
-
   .contact-form,
   .contact-feedback {
     padding: 1.25rem;
   }
 
   .form-field__input {
-    padding: 0.8rem 0.9rem;
-    font-size: 1rem; /* prevents iOS zoom on focus */
-  }
-
-  .contact-form__submit {
-    padding: 0.95rem 1.25rem;
+    font-size: 1rem;
   }
 }
